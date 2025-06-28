@@ -59,6 +59,10 @@ function updateClock() {
 }
 setInterval(updateClock, 1000);
 updateClock();
+
+
+
+
 // ...existing code...
 
 document.addEventListener('DOMContentLoaded', function() {
