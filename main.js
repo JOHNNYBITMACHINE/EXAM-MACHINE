@@ -48,10 +48,41 @@ setInterval(updateClock, 1000);
 updateClock();
 // ...existing code...
 
-
-
-
-
+function updateClock() {
+    const clock = document.getElementById('digital-clock');
+    if (!clock) return;
+    const now = new Date();
+    const h = String(now.getHours()).padStart(2, '0');
+    const m = String(now.getMinutes()).padStart(2, '0');
+    const s = String(now.getSeconds()).padStart(2, '0');
+    clock.textContent = `${h}:${m}:${s}`;
+}
+setInterval(updateClock, 1000);
+updateClock();
 // ...existing code...
 
+document.addEventListener('DOMContentLoaded', function() {
+    const sidebar = document.getElementById('sidebar');
+    const openBtn = document.getElementById('sidebar-toggle');
+    const closeBtn = document.getElementById('close-sidebar');
+    const body = document.body;
 
+    function openSidebar() {
+        sidebar.classList.remove('closed');
+        body.classList.add('with-sidebar');
+        body.classList.remove('no-sidebar');
+        openBtn.style.display = 'none';
+    }
+    function closeSidebar() {
+        sidebar.classList.add('closed');
+        body.classList.remove('with-sidebar');
+        body.classList.add('no-sidebar');
+        openBtn.style.display = 'block';
+    }
+
+    openBtn.addEventListener('click', openSidebar);
+    closeBtn.addEventListener('click', closeSidebar);
+
+    // Sidebar is closed by default, so no need to open it on load
+    closeSidebar();
+});
