@@ -87,3 +87,246 @@ body {
     margin-top: 12px;
     box-shadow: 0 2px 8px rgba(60, 72, 88, 0.15);
 }
+
+
+.about-content p#about-description {
+    font-family: 'Fira Mono', 'Consolas', 'Courier New', monospace;
+    font-size: 1.13em;
+    color: #2d2d2d;
+    background: #f7f7fa;
+    border-radius: 8px;
+    padding: 28px 24px;
+    margin: 0 auto;
+    box-shadow: 0 2px 12px rgba(60, 72, 88, 0.08);
+    text-align: left;
+    letter-spacing: 0.01em;
+    line-height: 1.8;
+    min-height: 320px;
+    border-left: 4px solid #4e54c8;
+    position: relative;
+    overflow-wrap: break-word;
+    white-space: pre-line;
+    /* Optional: blinking cursor effect */
+}
+
+.about-content p#about-description::after {
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 1.2em;
+    background: #4e54c8;
+    margin-left: 2px;
+    vertical-align: bottom;
+    animation: blink-cursor 0.8s steps(1) infinite;
+    opacity: 0.7;
+}
+
+@keyframes blink-cursor {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 0; }
+}
+
+.main-nav {
+  display: flex;
+  justify-content: center;
+  margin-top: 18px;
+  animation: navFadeIn 1.2s 0.3s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+@keyframes navFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.main-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 3.5rem;
+  padding: 0;
+  margin: 0;
+  background: rgba(255,255,255,0.85);
+  border-radius: 16px;
+  box-shadow: 0 2px 12px 0 rgba(31, 38, 135, 0.07);
+  padding: 10px 32px;
+}
+
+.main-nav li {
+  display: flex;
+}
+
+.main-nav a {
+  text-decoration: none;
+  color: #2575fc;
+  font-weight: 500;
+  font-size: 1.1rem;
+  padding: 6px 14px;
+  border-radius: 8px;
+  position: relative;
+  transition: 
+    background 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+    color 0.3s,
+    transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.main-nav a::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 50%;
+  bottom: 4px;
+  width: 0;
+  height: 3px;
+  background: rgba(0,0,0,0.12);
+  border-radius: 2px;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), left 0.3s cubic-bezier(0.4, 0, 0.2, 1), background 0.4s;
+}
+
+/* Unique animated gradient hover for each nav item */
+.main-nav li:nth-child(1) a:hover,
+.main-nav li:nth-child(1) a:focus {
+  background: linear-gradient(270deg, #ff9966, #ff5e62, #ff9966);
+  background-size: 200% 200%;
+  animation: gradientMove1 1.2s linear infinite;
+  color: #fff;
+}
+@keyframes gradientMove1 {
+  0% {background-position: 0% 50%;}
+  100% {background-position: 100% 50%;}
+}
+
+.main-nav li:nth-child(2) a:hover,
+.main-nav li:nth-child(2) a:focus {
+  background: linear-gradient(270deg, #56ccf2, #2f80ed, #56ccf2);
+  background-size: 200% 200%;
+  animation: gradientMove2 1.2s linear infinite;
+  color: #fff;
+}
+@keyframes gradientMove2 {
+  0% {background-position: 0% 50%;}
+  100% {background-position: 100% 50%;}
+}
+
+.main-nav li:nth-child(3) a:hover,
+.main-nav li:nth-child(3) a:focus {
+  background: linear-gradient(270deg, #43e97b, #38f9d7, #43e97b);
+  background-size: 200% 200%;
+  animation: gradientMove3 1.2s linear infinite;
+  color: #fff;
+}
+@keyframes gradientMove3 {
+  0% {background-position: 0% 50%;}
+  100% {background-position: 100% 50%;}
+}
+
+.main-nav li:nth-child(4) a:hover,
+.main-nav li:nth-child(4) a:focus {
+  background: linear-gradient(270deg, #fa709a, #fee140, #fa709a);
+  background-size: 200% 200%;
+  animation: gradientMove4 1.2s linear infinite;
+  color: #fff;
+}
+@keyframes gradientMove4 {
+  0% {background-position: 0% 50%;}
+  100% {background-position: 100% 50%;}
+}
+
+.main-nav li:nth-child(5) a:hover,
+.main-nav li:nth-child(5) a:focus {
+  background: linear-gradient(270deg, #30cfd0, #330867, #30cfd0);
+  background-size: 200% 200%;
+  animation: gradientMove5 1.2s linear infinite;
+  color: #fff;
+}
+@keyframes gradientMove5 {
+  0% {background-position: 0% 50%;}
+  100% {background-position: 100% 50%;}
+}
+
+.main-nav li:nth-child(6) a:hover,
+.main-nav li:nth-child(6) a:focus {
+  background: linear-gradient(270deg, #f7971e, #ffd200, #f7971e);
+  background-size: 200% 200%;
+  animation: gradientMove6 1.2s linear infinite;
+  color: #fff;
+}
+@keyframes gradientMove6 {
+  0% {background-position: 0% 50%;}
+  100% {background-position: 100% 50%;}
+}
+
+.main-nav li:nth-child(7) a:hover,
+.main-nav li:nth-child(7) a:focus {
+  background: linear-gradient(270deg, #f953c6, #b91d73, #f953c6);
+  background-size: 200% 200%;
+  animation: gradientMove7 1.2s linear infinite;
+  color: #fff;
+}
+@keyframes gradientMove7 {
+  0% {background-position: 0% 50%;}
+  100% {background-position: 100% 50%;}
+}
+
+.main-nav li:nth-child(8) a:hover,
+.main-nav li:nth-child(8) a:focus {
+  background: linear-gradient(270deg, #43cea2, #185a9d, #43cea2);
+  background-size: 200% 200%;
+  animation: gradientMove8 1.2s linear infinite;
+  color: #fff;
+}
+@keyframes gradientMove8 {
+  0% {background-position: 0% 50%;}
+  100% {background-position: 100% 50%;}
+}
+
+.main-nav li:nth-child(9) a:hover,
+.main-nav li:nth-child(9) a:focus {
+  background: linear-gradient(270deg, #ffaf7b, #d76d77, #ffaf7b);
+  background-size: 200% 200%;
+  animation: gradientMove9 1.2s linear infinite;
+  color: #fff;
+}
+@keyframes gradientMove9 {
+  0% {background-position: 0% 50%;}
+  100% {background-position: 100% 50%;}
+}
+
+.main-nav li:nth-child(10) a:hover,
+.main-nav li:nth-child(10) a:focus {
+  background: linear-gradient(270deg, #c471f5, #fa71cd, #c471f5);
+  background-size: 200% 200%;
+  animation: gradientMove10 1.2s linear infinite;
+  color: #fff;
+}
+@keyframes gradientMove10 {
+  0% {background-position: 0% 50%;}
+  100% {background-position: 100% 50%;}
+}
+
+/* Underline animation */
+.main-nav a::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 50%;
+  bottom: 4px;
+  width: 0;
+  height: 3px;
+  background: rgba(0,0,0,0.12);
+  border-radius: 2px;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), left 0.3s cubic-bezier(0.4, 0, 0.2, 1), background 0.4s;
+}
+
+.main-nav a:hover::after,
+.main-nav a:focus::after {
+  width: 80%;
+  left: 10%;
+  background: rgba(255,255,255,0.5);
+}
