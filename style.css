@@ -12,7 +12,7 @@ body {
   background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
 
   border: 3px solid #434ac7; /* Add this line for a colored border */
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 
