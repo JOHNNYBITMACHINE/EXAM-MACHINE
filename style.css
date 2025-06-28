@@ -12,6 +12,9 @@ body {
   background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
 }
 
+
+
+
 @keyframes slowBounce {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-18px); }
