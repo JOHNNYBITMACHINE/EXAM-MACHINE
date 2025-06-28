@@ -12,6 +12,21 @@ body {
   background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
 }
 
+@keyframes slowBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-18px); }
+}
+
+.sections-container section {
+  /* ...existing code... */
+  animation: slowBounce 10s ease-in-out infinite;
+}
+
+/* Alternate bounce direction for even sections */
+.sections-container section:nth-child(even) {
+  animation-delay: 5.5s; /* Half of 10s for opposite phase */
+}
+
 
 
 
