@@ -5,6 +5,8 @@ body {
     font-family: 'Segoe UI', Arial, sans-serif;
     background: linear-gradient(120deg, #d7e94c 0%, #e0e7ff 50%, #e3df66 100%);
     background-attachment: fixed;
+    border: 6px solid #4e54c8; /* Add this line for a colored border */
+    box-sizing: border-box;
 }
 
 

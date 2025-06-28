@@ -10,6 +10,9 @@ body {
   padding: 0;
   font-family: 'Segoe UI', 'Arial', sans-serif;
   background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+
+  border: 3px solid #434ac7; /* Add this line for a colored border */
+    box-sizing: border-box;
 }
 
 
@@ -122,6 +125,7 @@ body {
   justify-content: center;
   margin-top: 18px;
   animation: navFadeIn 1.2s 0.3s cubic-bezier(0.4, 0, 0.2, 1) both;
+  
 }
 
 @keyframes navFadeIn {
