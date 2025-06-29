@@ -13,6 +13,11 @@
 
     <div class="header-container">
         <h1 class="main-header">Exam Machine</h1>
+        
+    </div>
+
+
+    <div class ="nav-container">
         <nav class="main-nav">
             <a href="index.html">Home</a>
             <a href="quick.html">Quick Quiz</a>
@@ -128,12 +133,11 @@
     
     <div class="info-sections-container" >
 
-                                           
-                                                <section class="info-section" id="about-us">
-                                                        <h3>
-                                                            About Us
-                                                            <button id="about-toggle" style="margin-left:10px; font-size:0.8em;">Show More</button>
-                                                        </h3>
+                                           <section class="info-section" id="about-us">
+                                                    <h3>
+                                                        About Us
+                                                        <button class="toggle-btn" data-target="about-content" style="margin-left:10px; font-size:0.8em;">Show More</button>
+                                                    </h3>
                                                         <div id="about-content" class="about-collapsed">
                                                             <p>
                                                                 Welcome to Exam - Machine, your ultimate destination for comprehensive and effective preparation for various Indian government examinations.
@@ -166,104 +170,120 @@
 
 
 
-                                                    <section class="info-section" >
-                                                        <h3>FAQ</h3>
-                                                        <ul class="faq-list">
-                                                                <li>
-                                                                    <strong>What is Exam Machine?</strong><br>
-                                                                    Exam Machine is an online platform designed to help candidates prepare for various Indian government exams with quality study materials, quizzes, mock tests, and current affairs updates.
-                                                                </li>
-                                                                <li>
-                                                                    <strong>Which exams are covered on Exam Machine?</strong><br>
-                                                                    We cover SSC (CGL, CHSL, MTS), Railway (RRB), Banking (IBPS, SBI), State PSC, and many other central and state government recruitment exams.
-                                                                </li>
-                                                                <li>
-                                                                    <strong>Is Exam Machine free to use?</strong><br>
-                                                                    Yes, most of our resources, quizzes, and articles are free for all users.
-                                                                </li>
-                                                                <li>
-                                                                    <strong>How often is the content updated?</strong><br>
-                                                                    Our team regularly updates study materials, quizzes, and current affairs to match the latest exam patterns and syllabus.
-                                                                </li>
-                                                                <li>
-                                                                    <strong>Can I access previous year question papers?</strong><br>
-                                                                    Yes, we provide a repository of previous year papers with detailed solutions for practice.
-                                                                </li>
-                                                                <li>
-                                                                    <strong>How can I contact support?</strong><br>
-                                                                    You can reach us through the "Contact Us" form on our website for any queries or feedback.
-                                                                </li>
-                                                                <li>
-                                                                    <strong>Do you provide mock tests?</strong><br>
-                                                                    Yes, we offer full-length mock tests to help you simulate the real exam environment and improve your performance.
-                                                                </li>
-                                                                <li>
-                                                                    <strong>How do I stay updated with current affairs?</strong><br>
-                                                                    Visit our "Current Affairs" section for daily and monthly updates relevant to government exams.
-                                                                </li>
-                                                                <li>
-                                                                    <strong>Is registration required to use Exam Machine?</strong><br>
-                                                                    No registration is required to access most resources, but some features may require you to sign up in the future.
-                                                                </li>
-                                                        </ul>
+                                                <section class="info-section" id="faq-section">
+                                                            <h3>
+                                                                        FAQ
+                                                                        <button class="toggle-btn" data-target="faq-content" style="margin-left:10px; font-size:0.8em;">Show More</button>
+                                                            </h3>
+                                                            <div id="faq-content" class="about-collapsed">
+                                                                <ul class="faq-list">
+                                                                        <li>
+                                                                            <strong>What is Exam Machine?</strong><br>
+                                                                            Exam Machine is an online platform designed to help candidates prepare for various Indian government exams with quality study materials, quizzes, mock tests, and current affairs updates.
+                                                                        </li>
+                                                                        <li>
+                                                                            <strong>Which exams are covered on Exam Machine?</strong><br>
+                                                                            We cover SSC (CGL, CHSL, MTS), Railway (RRB), Banking (IBPS, SBI), State PSC, and many other central and state government recruitment exams.
+                                                                        </li>
+                                                                        <li>
+                                                                            <strong>Is Exam Machine free to use?</strong><br>
+                                                                            Yes, most of our resources, quizzes, and articles are free for all users.
+                                                                        </li>
+                                                                        <li>
+                                                                            <strong>How often is the content updated?</strong><br>
+                                                                            Our team regularly updates study materials, quizzes, and current affairs to match the latest exam patterns and syllabus.
+                                                                        </li>
+                                                                        <li>
+                                                                            <strong>Can I access previous year question papers?</strong><br>
+                                                                            Yes, we provide a repository of previous year papers with detailed solutions for practice.
+                                                                        </li>
+                                                                        <li>
+                                                                            <strong>How can I contact support?</strong><br>
+                                                                            You can reach us through the "Contact Us" form on our website for any queries or feedback.
+                                                                        </li>
+                                                                        <li>
+                                                                            <strong>Do you provide mock tests?</strong><br>
+                                                                            Yes, we offer full-length mock tests to help you simulate the real exam environment and improve your performance.
+                                                                        </li>
+                                                                        <li>
+                                                                            <strong>How do I stay updated with current affairs?</strong><br>
+                                                                            Visit our "Current Affairs" section for daily and monthly updates relevant to government exams.
+                                                                        </li>
+                                                                        <li>
+                                                                            <strong>Is registration required to use Exam Machine?</strong><br>
+                                                                            No registration is required to access most resources, but some features may require you to sign up in the future.
+                                                                        </li>
+                                                                </ul>
+                                                            </div>
+                                                </section>
+
+
+
+                                                        <section class="info-section" id="privacy-section">
+                                                            <h3>
+                                                                Privacy Policy
+                                                                <button class="toggle-btn" data-target="privacy-content" style="margin-left:10px; font-size:0.8em;">Show More</button>
+                                                            </h3>
+                                                            <div id="privacy-content" class="about-collapsed">
+                                                                    <p>
+                                                                        <strong>Last updated: June 30, 2025</strong>
+                                                                    </p>
+                                                                    <p>
+                                                                        At Exam Machine, we value your privacy and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, and safeguard your data when you use our website.
+                                                                    </p>
+                                                                    <ul>
+                                                                        <li>
+                                                                            <strong>Information We Collect:</strong><br>
+                                                                            We may collect basic information such as your name and email address when you contact us or submit forms. We also collect non-personal information like browser type, device, and usage statistics to improve our services.
+                                                                        </li>
+                                                                        <li>
+                                                                            <strong>How We Use Your Information:</strong><br>
+                                                                            Your information is used to respond to your queries, provide study materials, quizzes, and updates, and to improve the user experience on our website.
+                                                                        </li>
+                                                                        <li>
+                                                                            <strong>Cookies:</strong><br>
+                                                                            We may use cookies to enhance your browsing experience. You can disable cookies in your browser settings if you prefer.
+                                                                        </li>
+                                                                        <li>
+                                                                            <strong>Third-Party Services:</strong><br>
+                                                                            We may use third-party tools (such as analytics or form services) that may collect information as governed by their own privacy policies.
+                                                                        </li>
+                                                                        <li>
+                                                                            <strong>Data Security:</strong><br>
+                                                                            We take reasonable measures to protect your information, but please note that no method of transmission over the Internet is 100% secure.
+                                                                        </li>
+                                                                        <li>
+                                                                            <strong>Children's Privacy:</strong><br>
+                                                                            Exam Machine is intended for users above the age of 13. We do not knowingly collect personal information from children under 13.
+                                                                        </li>
+                                                                        <li>
+                                                                            <strong>Changes to This Policy:</strong><br>
+                                                                            We may update this Privacy Policy from time to time. Any changes will be posted on this page.
+                                                                        </li>
+                                                                        <li>
+                                                                            <strong>Contact Us:</strong><br>
+                                                                            If you have any questions about this Privacy Policy, please use the contact form on our website.
+                                                                        </li>
+                                                                    </ul>
+                                                                    <p>
+                                                                        By using Exam Machine, you agree to this Privacy Policy.
+                                                                    </p>
+                                                            </div>
                                                     </section>
 
-
-
-
-                                                    <section class="info-section">
-                                                        <h3>Privacy Policy</h3>
-                                                         <p>
-                                                            <strong>Last updated: June 30, 2025</strong>
-                                                        </p>
-                                                        <p>
-                                                            At Exam Machine, we value your privacy and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, and safeguard your data when you use our website.
-                                                        </p>
-                                                        <ul>
-                                                            <li>
-                                                                <strong>Information We Collect:</strong><br>
-                                                                We may collect basic information such as your name and email address when you contact us or submit forms. We also collect non-personal information like browser type, device, and usage statistics to improve our services.
-                                                            </li>
-                                                            <li>
-                                                                <strong>How We Use Your Information:</strong><br>
-                                                                Your information is used to respond to your queries, provide study materials, quizzes, and updates, and to improve the user experience on our website.
-                                                            </li>
-                                                            <li>
-                                                                <strong>Cookies:</strong><br>
-                                                                We may use cookies to enhance your browsing experience. You can disable cookies in your browser settings if you prefer.
-                                                            </li>
-                                                            <li>
-                                                                <strong>Third-Party Services:</strong><br>
-                                                                We may use third-party tools (such as analytics or form services) that may collect information as governed by their own privacy policies.
-                                                            </li>
-                                                            <li>
-                                                                <strong>Data Security:</strong><br>
-                                                                We take reasonable measures to protect your information, but please note that no method of transmission over the Internet is 100% secure.
-                                                            </li>
-                                                            <li>
-                                                                <strong>Children's Privacy:</strong><br>
-                                                                Exam Machine is intended for users above the age of 13. We do not knowingly collect personal information from children under 13.
-                                                            </li>
-                                                            <li>
-                                                                <strong>Changes to This Policy:</strong><br>
-                                                                We may update this Privacy Policy from time to time. Any changes will be posted on this page.
-                                                            </li>
-                                                            <li>
-                                                                <strong>Contact Us:</strong><br>
-                                                                If you have any questions about this Privacy Policy, please use the contact form on our website.
-                                                            </li>
-                                                        </ul>
-                                                        <p>
-                                                            By using Exam Machine, you agree to this Privacy Policy.
-                                                        </p>
-                                                    </section> 
-                                                    
-                                                    
 
     </div>
 
 
-     <div>
+
+
+
+
+
+
+
+
+    <div>
                                             <h2>Contact Us</h2>
                                             <p>If you have any questions or feedback, feel free to reach out to us.</p>
                                             <form action="https://example.com/contact" method="post">

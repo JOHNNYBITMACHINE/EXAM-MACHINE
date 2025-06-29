@@ -15,10 +15,11 @@ function isMobile() {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-    // About Us Show More/Less
-    var btn = document.getElementById("about-toggle");
-    var content = document.getElementById("about-content");
-    if (btn && content) {
+    // Toggle for all sections with .toggle-btn
+    var toggleButtons = document.querySelectorAll('.toggle-btn');
+    toggleButtons.forEach(function(btn) {
+        var targetId = btn.getAttribute('data-target');
+        var content = document.getElementById(targetId);
         btn.addEventListener("click", function() {
             if (content.classList.contains("about-collapsed")) {
                 content.classList.remove("about-collapsed");
@@ -30,12 +31,10 @@ document.addEventListener("DOMContentLoaded", function() {
                 btn.textContent = "Show More";
             }
         });
-    }
+    });
 
     // Add mobile-view class for mobile devices
     if (isMobile()) {
         document.body.classList.add("mobile-view");
-        // You can also adjust specific containers if needed:
-        // document.querySelector('.info-sections-container').classList.add('mobile-info');
     }
 });
