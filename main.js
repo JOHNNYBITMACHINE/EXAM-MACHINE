@@ -19,11 +19,13 @@ document.addEventListener("DOMContentLoaded", function() {
     var btn = document.getElementById("about-toggle");
     var content = document.getElementById("about-content");
     btn.addEventListener("click", function() {
-        if (content.style.display === "none") {
-            content.style.display = "block";
+        if (content.classList.contains("about-collapsed")) {
+            content.classList.remove("about-collapsed");
+            content.classList.add("about-expanded");
             btn.textContent = "Show Less";
         } else {
-            content.style.display = "none";
+            content.classList.remove("about-expanded");
+            content.classList.add("about-collapsed");
             btn.textContent = "Show More";
         }
     });

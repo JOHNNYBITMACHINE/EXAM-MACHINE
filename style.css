@@ -436,3 +436,19 @@ body {
     background: #1d3557;
 }
 
+#about-content.about-collapsed {
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Show only 3 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 4.5em;
+    transition: max-height 0.3s;
+}
+
+/* Show full content when expanded */
+#about-content.about-expanded p {
+    display: block;
+    max-height: none;
+    overflow: visible;
+}
