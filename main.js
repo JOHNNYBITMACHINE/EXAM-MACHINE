@@ -12,3 +12,19 @@
         updateClock();
 
 
+// This script toggles the visibility of the "About Us" section
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    var btn = document.getElementById("about-toggle");
+    var content = document.getElementById("about-content");
+    btn.addEventListener("click", function() {
+        if (content.style.display === "none") {
+            content.style.display = "block";
+            btn.textContent = "Show Less";
+        } else {
+            content.style.display = "none";
+            btn.textContent = "Show More";
+        }
+    });
+});
