@@ -30,8 +30,7 @@ body {
     color: transparent;
     background-color: transparent;
     animation: 
-        mainHeaderGradientMove 6s ease-in-out infinite,
-        mainHeaderWave 10s cubic-bezier(.68,-0.55,.27,1.55) infinite;
+        mainHeaderGradientMove 6s ease-in-out infinite;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
