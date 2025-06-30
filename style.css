@@ -16,22 +16,15 @@ body {
 /* header styles */
 
 .main-header {
-    width: auto;
+    width: 90%;
     text-align: left;
     font-size: 2.8rem;
     font-weight: bold;
        /* Remove min-width if not needed */
-    
-  
     margin: 0;
     background: linear-gradient(90deg, #ff6a00, #ee0979, #43cea2, #185a9d);
-    background-size: 100% 100%;
-    background-position: 0% 50%;
-    color: transparent;
-    background-color: transparent;
-    animation: 
-        mainHeaderGradientMove 6s ease-in-out infinite,
-        mainHeaderWave 10s cubic-bezier(.68,-0.55,.27,1.55) infinite;
+    background-size: 400% 400%;
+    animation:mainHeaderGradientMove 6s ease-in-out infinite;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -80,7 +73,7 @@ body {
 
 
 .clock-container {
-    width: 320px;
+    width: 90%;
     height: 40px;
     display: flex;
     align-items: center;

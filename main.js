@@ -1,10 +1,15 @@
 // Digital Clock
 function updateClock() {
     const now = new Date();
-    const h = String(now.getHours()).padStart(2, '0');
+    const h24 = now.getHours();
+    const h = String((h24 % 12) === 0 ? 12 : (h24 % 12)).padStart(2, '0');
     const m = String(now.getMinutes()).padStart(2, '0');
     const s = String(now.getSeconds()).padStart(2, '0');
-    document.getElementById('digitalClock').textContent = `${h}:${m}:${s}`;
+    const ampm = h24 >= 12 ? 'PM' : 'AM';
+    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    const month = monthNames[now.getMonth()];
+    const day = String(now.getDate()).padStart(2, '0');
+    document.getElementById('digitalClock').textContent = `${month} ${day}  ${h}:${m}:${s} ${ampm}`;
 }
 setInterval(updateClock, 1000);
 updateClock();
