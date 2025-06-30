@@ -259,11 +259,7 @@ body {
 }
 
 /* Responsive: stack on small screens */
-@media (max-width: 800px) {
-    .subjects-grid {
-        grid-template-columns: 1fr;
-    }
-}
+
 
 
 .subject-link {
@@ -322,7 +318,7 @@ body {
 
 .main-nav a:hover {
     background: linear-gradient(150deg, #f37272, #6d64cc, #f90834);
-    transform: scale(1.1);
+    transform: translateX(-40px);
 }
 
 
@@ -518,22 +514,19 @@ body {
 
 
 
-@media (max-width: 600px) {
-    .main-header {
-        font-size: 1.5rem;
-        padding: 2px 2px;
-    }
-    .subjects-container h2 {
-        font-size: 1.2rem;
-        padding: 4px 0;
-    }
-    .info-section h3 {
-        font-size: 1.1em;
+
+
+
+
+/* Responsive styles for mobile view */
+
+@media screen and (min-width: 500px) and (max-width: 2100px) {
+    .mobile-view{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 }
-
-
-
 
 
 
