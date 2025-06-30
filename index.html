@@ -3,324 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogger-like Layout</title>
     <link rel="stylesheet" href="style.css">
-    <meta http-equiv="refresh" content="10">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900;1000;1100;1200;1300;1400;1500;1600;1700;&display=swap" rel="stylesheet">
     
-    <title>Exam Machine</title>
 </head>
-<body class="mobile-view">
+<body class="bg-gray-100 p-4">
+    <div class="container bg-white shadow-lg rounded-lg overflow-hidden">
 
-    <!-- Header -->
-
-    <div class="header-container">
-        <div class="inner-con">
-            <h1 class="main-header">Exam Machine</h1>
-        </div>
-        
-    </div>
+        <!-- Header Section -->
+        <header class="header-bg p-4 flex flex-col md:flex-row justify-between items-center rounded-t-lg mb-4">
+            <div class="text-2xl font-bold text-gray-800 mb-4 md:mb-0">WEBSITE NAME</div>
 
 
-    <div class ="nav-container">
-        <nav class="main-nav">
-            <a href="index.html">Home</a>
-            <a href="quick.html">Quick Quiz</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-            <a href="faq.html">FAQ</a>
-            <a href="privacy.html">Privacy Policy</a>
-        </nav>
-    </div>
+            
+            <nav class="flex flex-wrap justify-center gap-2">
+                <button class="section-bg text-white px-4 py-2 rounded-md font-semibold hover:dark-section-bg transition-colors duration-200">HOME</button>
+                <button class="section-bg text-white px-4 py-2 rounded-md font-semibold hover:dark-section-bg transition-colors duration-200">QUIZ</button>
+                <button class="section-bg text-white px-4 py-2 rounded-md font-semibold hover:dark-section-bg transition-colors duration-200">ABOUT US</button>
+                <button class="section-bg text-white px-4 py-2 rounded-md font-semibold hover:dark-section-bg transition-colors duration-200">CONTACT</button>
+                <button class="section-bg text-white px-4 py-2 rounded-md font-semibold hover:dark-section-bg transition-colors duration-200">FAQ</button>
+            </nav>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+
+            <!-- Left Sidebar - Categories -->
+            <section class="lg:col-span-1 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-2 gap-3 p-3 bg-gray-50 rounded-lg shadow-inner">
+                <div class="section-bg text-white p-3 rounded-md text-center font-semibold flex items-center justify-center h-24 hover:dark-section-bg transition-colors duration-200 cursor-pointer">HISTORY</div>
+                <div class="section-bg text-white p-3 rounded-md text-center font-semibold flex items-center justify-center h-24 hover:dark-section-bg transition-colors duration-200 cursor-pointer">GEOGRAPHY</div>
+                <div class="section-bg text-white p-3 rounded-md text-center font-semibold flex items-center justify-center h-24 hover:dark-section-bg transition-colors duration-200 cursor-pointer">POLITY</div>
+                <div class="section-bg text-white p-3 rounded-md text-center font-semibold flex items-center justify-center h-24 hover:dark-section-bg transition-colors duration-200 cursor-pointer">STATIC</div>
+                <div class="section-bg text-white p-3 rounded-md text-center font-semibold flex items-center justify-center h-24 hover:dark-section-bg transition-colors duration-200 cursor-pointer">SCIENCE</div>
+                <div class="section-bg text-white p-3 rounded-md text-center font-semibold flex items-center justify-center h-24 hover:dark-section-bg transition-colors duration-200 cursor-pointer">GENERAL INTELLIGENCE</div>
+                <div class="section-bg text-white p-3 rounded-md text-center font-semibold flex items-center justify-center h-24 hover:dark-section-bg transition-colors duration-200 cursor-pointer">MATH</div>
+                <div class="section-bg text-white p-3 rounded-md text-center font-semibold flex items-center justify-center h-24 hover:dark-section-bg transition-colors duration-200 cursor-pointer">GENERAL INTELLIGENCE</div>
+                <div class="section-bg text-white p-3 rounded-md text-center font-semibold flex items-center justify-center h-24 col-span-2 sm:col-span-3 md:col-span-4 lg:col-span-2 hover:dark-section-bg transition-colors duration-200 cursor-pointer">ENGLISH</div>
+            </section>
 
 
-    <!-- Digital Clock -->
-    <div class="clock-container">
-        <div class="clock" id="digitalClock">00:00:00</div>
-    </div>
 
 
 
 
 
 
-    <!-- Main Content -->
-    <div class="main-content-flex">
-        <div class="subjects-container">
-         <h2>Subjects</h2>
-            <div class="subjects-grid">
-                    <a href="history.html" class="subject-link">
-                        <section id="history" class="subject-section">
-                            <h3>History</h3>
-                            <p>Content for History goes here.</p>
-                        </section>
-                    </a>
-                    <a href="geography.html" class="subject-link">
-                        <section id="geography" class="subject-section">
-                            <h3>Geography</h3>
-                            <p>Content for Geography goes here.</p>
-                        </section>
-                    </a>
-                    <a href="polity.html" class="subject-link">
-                        <section id="polity" class="subject-section">
-                            <h3>Polity</h3>
-                            <p>Content for Polity goes here.</p>
-                        </section>
-                    </a>
-                    <a href="economy.html" class="subject-link">
-                        <section id="economy" class="subject-section">
-                            <h3>Economy</h3>
-                            <p>Content for Economy goes here.</p>
-                        </section>
-                    </a>
-                    <a href="static.html" class="subject-link">
-                        <section id="static" class="subject-section">
-                            <h3>Static</h3>
-                            <p>Content for Static goes here.</p>
-                        </section>
-                    </a>
-                    <a href="current-affairs.html" class="subject-link">
-                        <section id="current-affairs" class="subject-section">
-                            <h3>Current Affairs</h3>
-                            <p>Content for Current Affairs goes here.</p>
-                        </section>
-                    </a>
-                    <a href="science.html" class="subject-link">
-                        <section id="science" class="subject-section">
-                            <h3>Science</h3>
-                            <p>Content for Science goes here.</p>
-                        </section>
-                    </a>
-                    <a href="general-intelligence.html" class="subject-link">
-                        <section id="general-intelligence" class="subject-section">
-                            <h3>General Intelligence</h3>
-                            <p>Content for General Intelligence goes here.</p>
-                        </section>
-                    </a>
-                    <a href="math.html" class="subject-link">
-                        <section id="math" class="subject-section">
-                            <h3>Math</h3>
-                            <p>Content for Math goes here.</p>
-                        </section>
-                    </a>
-                    <a href="english.html" class="subject-link">
-                        <section id="english" class="subject-section">
-                            <h3>English</h3>
-                            <p>Content for English goes here.</p>
-                        </section>
-                    </a>
+            <!-- Middle Section - Updated News, Mock Tests, Contact -->
+            <section class="lg:col-span-2 flex flex-col gap-4">
+                <!-- Updated News -->
+                <div class="p-4 bg-gray-50 rounded-lg shadow-inner">
+                    <h2 class="text-xl font-bold text-gray-800 mb-3">UPDATED NEWS</h2>
+                    <div class="section-bg text-white p-3 mb-2 rounded-md font-semibold hover:dark-section-bg transition-colors duration-200 cursor-pointer">UPDATED NEWS</div>
+                    <div class="section-bg text-white p-3 mb-2 rounded-md font-semibold hover:dark-section-bg transition-colors duration-200 cursor-pointer">UPDATED NEWS</div>
+                    <div class="section-bg text-white p-3 rounded-md font-semibold hover:dark-section-bg transition-colors duration-200 cursor-pointer">UPDATED NEWS</div>
                 </div>
-     </div>
-        <div class="side-container">
-            <section class="side-section mock-test" id ="mock-test">
-                <h3>Mock Test</h3>
-                <p>Practice with the latest mock tests.</p>
+
+
+
+
+
+
+
+
+
+
+
+                <!-- Mock Test, Exam Update, Book -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 p-3 bg-gray-50 rounded-lg shadow-inner">
+                    <button class="dark-section-bg text-white p-4 rounded-md text-center font-bold text-lg h-32 flex items-center justify-center hover:bg-purple-800 transition-colors duration-200">mock test</button>
+                    <button class="dark-section-bg text-white p-4 rounded-md text-center font-bold text-lg h-32 flex items-center justify-center hover:bg-purple-800 transition-colors duration-200">exam update</button>
+                    <button class="dark-section-bg text-white p-4 rounded-md text-center font-bold text-lg h-32 flex items-center justify-center hover:bg-purple-800 transition-colors duration-200">book</button>
+                </div>
+
+
+
+
+
+
+
+
+
+
+                <!-- Contact Form -->
+                <div class="p-4 bg-gray-50 rounded-lg shadow-inner relative flex-1">
+                    <h2 class="text-xl font-bold text-gray-800 mb-3">contact</h2>
+                    <input type="text" placeholder="Name" class="input-field w-full p-3 mb-3 rounded-md focus:outline-none focus:ring-2 focus:ring-dark-section-bg transition-colors duration-200">
+                    <input type="email" placeholder="Email id" class="input-field w-full p-3 mb-3 rounded-md focus:outline-none focus:ring-2 focus:ring-dark-section-bg transition-colors duration-200">
+                    <textarea placeholder="comment" class="input-field w-full p-3 mb-3 rounded-md min-h-[100px] resize-y focus:outline-none focus:ring-2 focus:ring-dark-section-bg transition-colors duration-200"></textarea>
+                    <button class="dark-section-bg text-white px-6 py-3 rounded-md font-semibold hover:bg-purple-800 transition-colors duration-200 block ml-auto">submit</button>
+
+                    <!-- Privacy Policy Button - positioned absolutely to match image -->
+                    <button class="absolute bottom-4 right-4 section-bg text-white p-4 rounded-md text-center font-bold text-lg transform hover:scale-105 transition-transform duration-200">privacy policy</button>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
             </section>
-            <section class="side-section articles" id="articles">
-                <h3>Articles</h3>
-                <p>Read helpful articles for your exam preparation.</p>
-            </section>
-            <section class="side-section blog" id="blog">
-                <h3>Blog</h3>
-                <p>Stay updated with our latest blog posts.</p>
-            </section>
-            <section class="side-section exam-update" id="exam-update">
-                <h3>Exam Update</h3>
-                <p>Get the latest exam notifications and updates.</p>
-            </section>
-        </div>
+        </main>
     </div>
-
-
-    <!-- rest of the body  -->
-                                     
-    
-    
-    <div class="info-sections-container" >
-
-                                           <section class="info-section" id="about-us">
-                                                    <h3>
-                                                        About Us
-                                                        <button class="toggle-btn" data-target="about-content" style="margin-left:10px; font-size:0.8em;">Show More</button>
-                                                    </h3>
-                                                        <div id="about-content" class="about-collapsed">
-                                                            <p>
-                                                                Welcome to Exam - Machine, your ultimate destination for comprehensive and effective preparation for various Indian government examinations.
-                                                                In today's competitive landscape, securing a coveted position in the public sector demands dedication, strategic preparation, and access to the right resources. We understand these challenges intimately, and our mission is to empower aspiring candidates like you to achieve your dreams.
-                                                                <br><br>
-                                                                At Exam - Machine, we are committed to providing a one-stop solution for all your government exam preparation needs. Our platform is meticulously designed to cater to a wide array of examinations, including SSC CGL, CHSL, MTS, Railway Recruitment Board (RRB) exams, Banking sector exams (IBPS PO, Clerk, SBI PO, Clerk), State PSC examinations, and numerous other central and state government recruitment tests.
-                                                                <br><br>
-                                                                We believe that quality education should be accessible to all. That's why we bring together a team of experienced educators, subject matter experts, and exam toppers to curate high-quality study material that is both comprehensive and easy to understand. Our resources are regularly updated to align with the latest exam patterns and syllabus changes, ensuring you are always equipped with the most relevant information.
-                                                                <br><br>
-                                                                <b>Our offerings include:</b>
-                                                                <ul>
-                                                                    <li>Extensive Study Material: In-depth notes, e-books, and articles covering every topic crucial for your exams.</li>
-                                                                    <li>Practice Questions & Quizzes: A vast bank of multiple-choice questions (MCQs) and interactive quizzes to test your knowledge and reinforce learning.</li>
-                                                                    <li>Previous Year Papers: Access to a repository of past examination papers with detailed solutions to help you understand exam trends and question formats.</li>
-                                                                    <li>Mock Tests: Full-length mock tests designed to simulate the actual exam environment, helping you build confidence and improve time management.</li>
-                                                                    <li>Current Affairs Updates: Regular updates on national and international current events, essential for general awareness sections of most exams.</li>
-                                                                    <li>Strategy Guides & Tips: Expert advice, study plans, and proven strategies to enhance your preparation efficiency.</li>
-                                                                    <li>Dedicated Support: A responsive support system to address your queries and provide guidance whenever you need it.</li>
-                                                                </ul>
-                                                                We are more than just a website; we are a community dedicated to your success. Our user-friendly interface, combined with a focus on practical learning, makes the preparation journey engaging and rewarding. We understand the sacrifices you make and the hard work you put in, and we are here to support you every step of the way.
-                                                                <br><br>
-                                                                Join thousands of successful aspirants who have trusted Exam Machine for their government exam preparation. Let us help you unlock your potential and secure a brighter future in public service. Your journey towards a successful career begins here.
-                                                            </p>
-                                                        </div>
-                                                </section>
-
-
-
-                                                        
-
-
-
-                                                <section class="info-section" id="faq-section">
-                                                            <h3>
-                                                                        FAQ
-                                                                        <button class="toggle-btn" data-target="faq-content" style="margin-left:10px; font-size:0.8em;">Show More</button>
-                                                            </h3>
-                                                            <div id="faq-content" class="about-collapsed">
-                                                                <ul class="faq-list">
-                                                                        <li>
-                                                                            <strong>What is Exam Machine?</strong><br>
-                                                                            Exam Machine is an online platform designed to help candidates prepare for various Indian government exams with quality study materials, quizzes, mock tests, and current affairs updates.
-                                                                        </li>
-                                                                        <li>
-                                                                            <strong>Which exams are covered on Exam Machine?</strong><br>
-                                                                            We cover SSC (CGL, CHSL, MTS), Railway (RRB), Banking (IBPS, SBI), State PSC, and many other central and state government recruitment exams.
-                                                                        </li>
-                                                                        <li>
-                                                                            <strong>Is Exam Machine free to use?</strong><br>
-                                                                            Yes, most of our resources, quizzes, and articles are free for all users.
-                                                                        </li>
-                                                                        <li>
-                                                                            <strong>How often is the content updated?</strong><br>
-                                                                            Our team regularly updates study materials, quizzes, and current affairs to match the latest exam patterns and syllabus.
-                                                                        </li>
-                                                                        <li>
-                                                                            <strong>Can I access previous year question papers?</strong><br>
-                                                                            Yes, we provide a repository of previous year papers with detailed solutions for practice.
-                                                                        </li>
-                                                                        <li>
-                                                                            <strong>How can I contact support?</strong><br>
-                                                                            You can reach us through the "Contact Us" form on our website for any queries or feedback.
-                                                                        </li>
-                                                                        <li>
-                                                                            <strong>Do you provide mock tests?</strong><br>
-                                                                            Yes, we offer full-length mock tests to help you simulate the real exam environment and improve your performance.
-                                                                        </li>
-                                                                        <li>
-                                                                            <strong>How do I stay updated with current affairs?</strong><br>
-                                                                            Visit our "Current Affairs" section for daily and monthly updates relevant to government exams.
-                                                                        </li>
-                                                                        <li>
-                                                                            <strong>Is registration required to use Exam Machine?</strong><br>
-                                                                            No registration is required to access most resources, but some features may require you to sign up in the future.
-                                                                        </li>
-                                                                </ul>
-                                                            </div>
-                                                </section>
-
-
-
-                                                        <section class="info-section" id="privacy-section">
-                                                            <h3>
-                                                                Privacy Policy
-                                                                <button class="toggle-btn" data-target="privacy-content" style="margin-left:10px; font-size:0.8em;">Show More</button>
-                                                            </h3>
-                                                            <div id="privacy-content" class="about-collapsed">
-                                                                    <p>
-                                                                        <strong>Last updated: June 30, 2025</strong>
-                                                                    </p>
-                                                                    <p>
-                                                                        At Exam Machine, we value your privacy and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, and safeguard your data when you use our website.
-                                                                    </p>
-                                                                    <ul>
-                                                                        <li>
-                                                                            <strong>Information We Collect:</strong><br>
-                                                                            We may collect basic information such as your name and email address when you contact us or submit forms. We also collect non-personal information like browser type, device, and usage statistics to improve our services.
-                                                                        </li>
-                                                                        <li>
-                                                                            <strong>How We Use Your Information:</strong><br>
-                                                                            Your information is used to respond to your queries, provide study materials, quizzes, and updates, and to improve the user experience on our website.
-                                                                        </li>
-                                                                        <li>
-                                                                            <strong>Cookies:</strong><br>
-                                                                            We may use cookies to enhance your browsing experience. You can disable cookies in your browser settings if you prefer.
-                                                                        </li>
-                                                                        <li>
-                                                                            <strong>Third-Party Services:</strong><br>
-                                                                            We may use third-party tools (such as analytics or form services) that may collect information as governed by their own privacy policies.
-                                                                        </li>
-                                                                        <li>
-                                                                            <strong>Data Security:</strong><br>
-                                                                            We take reasonable measures to protect your information, but please note that no method of transmission over the Internet is 100% secure.
-                                                                        </li>
-                                                                        <li>
-                                                                            <strong>Children's Privacy:</strong><br>
-                                                                            Exam Machine is intended for users above the age of 13. We do not knowingly collect personal information from children under 13.
-                                                                        </li>
-                                                                        <li>
-                                                                            <strong>Changes to This Policy:</strong><br>
-                                                                            We may update this Privacy Policy from time to time. Any changes will be posted on this page.
-                                                                        </li>
-                                                                        <li>
-                                                                            <strong>Contact Us:</strong><br>
-                                                                            If you have any questions about this Privacy Policy, please use the contact form on our website.
-                                                                        </li>
-                                                                    </ul>
-                                                                    <p>
-                                                                        By using Exam Machine, you agree to this Privacy Policy.
-                                                                    </p>
-                                                            </div>
-                                                    </section>
-
-
-    </div>
-
-
-
-
-
-
-
-
-
-
-    <div>
-                                            <h2>Contact Us</h2>
-                                            <p>If you have any questions or feedback, feel free to reach out to us.</p>
-                                            <form action="https://example.com/contact" method="post">
-                                                <label for="name">Name:</label>
-                                                <input type="text" id="name" name="name" required>
-                                                <label for="email">Email:</label>
-                                                <input type="email" id="email" name="email" required>
-                                                <label for="message">Message:</label>
-                                                <textarea id="message" name="message" rows="4" required></textarea>
-                                                <button type="submit">Send Message</button>
-                                            </form>
-
-    </div>
-
-
-    
-
-
-
-
-
-
-
-
-
-    <script src="main.js"></script>
-
 </body>
-
-
-
-
-
-
-
-
 </html>
