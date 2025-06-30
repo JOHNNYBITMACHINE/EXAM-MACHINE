@@ -23,17 +23,8 @@ body {
        /* Remove min-width if not needed */
     margin: 0;
     background: linear-gradient(90deg, #ff6a00, #ee0979, #43cea2, #185a9d);
-<<<<<<< HEAD
     background-size: 400% 400%;
     animation:mainHeaderGradientMove 6s ease-in-out infinite;
-=======
-    background-size: 100% 100%;
-    background-position: 0% 50%;
-    color: transparent;
-    background-color: transparent;
-    animation: 
-        mainHeaderGradientMove 6s ease-in-out infinite;
->>>>>>> a005d7b35ab2551655faed6d289d8bfbe8c7f816
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
