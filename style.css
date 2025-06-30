@@ -2,7 +2,7 @@ body {
     width: auto;
     background: linear-gradient(135deg, #bdc3c7, #0f0c29, #302b63, #A5FECB);
     background-size: 300% 300%;
-    animation: bodyGradientMove 5s ease-in-out infinite alternate;
+    animation: bodyGradientMove 60s ease-in-out infinite alternate;
     min-height: 100vh;
     position: relative;
     overflow-x: hidden;
@@ -22,10 +22,10 @@ body {
     margin: 1%;
     padding: 1%;     /* Add left padding */
     width: 100%;
-    background: linear-gradient(90deg, #ff6a00, #ee0979, #43cea2, #185a9d);
+    background: linear-gradient(90deg,#185a9d, #43cea2 , #ee0979 , #ff6a00);
     background-size: 400% 400%;
     border-radius: 20px;
-    animation: mainHeaderrGradientMove 6s ease-in-out infinite;
+    animation: mainHeaderGradientMove 20s ease-in-out infinite;
 }
 
 @keyframes mainHeaderrGradientMove {
@@ -62,7 +62,7 @@ body {
   
     background: linear-gradient(90deg, #ff6a00, #ee0979, #43cea2, #185a9d);
     background-size: 400% 400%;
-    animation:mainHeaderGradientMove 6s ease-in-out infinite;
+    animation:mainHeaderGradientMove 20s ease-in-out infinite;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -106,7 +106,7 @@ body {
     border-radius: 10px;
     background: linear-gradient(135deg, #ff6a00, #ee0979, #43cea2, #185a9d);
     background-size: 400% 400%;
-    animation: gradientMove 6s ease-in-out infinite;
+    animation: gradientMove 20s ease-in-out infinite;
     /* Vibrant multi-color shadow */
     box-shadow:
         0 4px 24px 0 rgba(255, 106, 0, 0.25),
