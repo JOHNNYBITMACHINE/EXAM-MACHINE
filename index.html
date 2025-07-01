@@ -3,45 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blogger-like Layout</title>
+    <title>Exam Machine</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900;1000;1100;1200;1300;1400;1500;1600;1700;&display=swap" rel="stylesheet">
-    
 </head>
-<body class="bg-gray-100 p-4">
-    <div class="w-full min-h-screen bg-white shadow-lg rounded-lg overflow-hidden">
+<body>
+        <div class="container">
+            <div class="header">
+                <h1>Exam Machine</h1>
 
-        <!-- Header Section -->
-        <header class="header-bg p-4 flex flex-col md:flex-row justify-between items-center rounded-t-lg mb-4">
-            <div class="text-2xl font-bold text-gray-800 mb-4 md:mb-0">WEBSITE NAME</div>
+            </div>
 
 
 
-            <nav class="flex flex-wrap justify-center gap-2">
-                <button class="section-bg text-white px-4 py-2 rounded-md font-semibold hover:dark-section-bg transition-colors duration-200">HOME</button>
-                <button class="section-bg text-white px-4 py-2 rounded-md font-semibold hover:dark-section-bg transition-colors duration-200">QUIZ</button>
-                <button class="section-bg text-white px-4 py-2 rounded-md font-semibold hover:dark-section-bg transition-colors duration-200">ABOUT US</button>
-                <button class="section-bg text-white px-4 py-2 rounded-md font-semibold hover:dark-section-bg transition-colors duration-200">CONTACT</button>
-                <button class="section-bg text-white px-4 py-2 rounded-md font-semibold hover:dark-section-bg transition-colors duration-200">FAQ</button>
-            </nav>
-        </header>
 
-        <!-- Main Content Area -->
-        <main class="grid grid-cols-1 lg:grid-cols-3 gap-4">
 
-            <!-- Left Sidebar - Categories -->
-            <section class="lg:col-span-1 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-2 gap-3 p-3 bg-gray-50 rounded-lg shadow-inner">
-                <div class="section-bg text-white p-3 rounded-md text-center font-semibold flex items-center justify-center h-24 hover:dark-section-bg transition-colors duration-200 cursor-pointer">HISTORY</div>
-                <div class="section-bg text-white p-3 rounded-md text-center font-semibold flex items-center justify-center h-24 hover:dark-section-bg transition-colors duration-200 cursor-pointer">GEOGRAPHY</div>
-                <div class="section-bg text-white p-3 rounded-md text-center font-semibold flex items-center justify-center h-24 hover:dark-section-bg transition-colors duration-200 cursor-pointer">POLITY</div>
-                <div class="section-bg text-white p-3 rounded-md text-center font-semibold flex items-center justify-center h-24 hover:dark-section-bg transition-colors duration-200 cursor-pointer">STATIC</div>
-                <div class="section-bg text-white p-3 rounded-md text-center font-semibold flex items-center justify-center h-24 hover:dark-section-bg transition-colors duration-200 cursor-pointer">SCIENCE</div>
-                <div class="section-bg text-white p-3 rounded-md text-center font-semibold flex items-center justify-center h-24 hover:dark-section-bg transition-colors duration-200 cursor-pointer">GENERAL INTELLIGENCE</div>
-                <div class="section-bg text-white p-3 rounded-md text-center font-semibold flex items-center justify-center h-24 hover:dark-section-bg transition-colors duration-200 cursor-pointer">MATH</div>
-                <div class="section-bg text-white p-3 rounded-md text-center font-semibold flex items-center justify-center h-24 hover:dark-section-bg transition-colors duration-200 cursor-pointer">GENERAL INTELLIGENCE</div>
-                <div class="section-bg text-white p-3 rounded-md text-center font-semibold flex items-center justify-center h-24 col-span-2 sm:col-span-3 md:col-span-4 lg:col-span-2 hover:dark-section-bg transition-colors duration-200 cursor-pointer">ENGLISH</div>
-            </section>
+
+            <div class="nav">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Quiz</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+
+
+
+            <div class="search">
+                <form class="search-bar" action="#" method="get">
+                    <input type="text" placeholder="Search..." name="search">
+                    <button type="submit">Search</button>
+                </form>
+            </div>
 
 
 
@@ -50,15 +43,9 @@
 
 
 
-            <!-- Middle Section - Updated News, Mock Tests, Contact -->
-            <section class="lg:col-span-2 flex flex-col gap-4">
-                <!-- Updated News -->
-                <div class="p-4 bg-gray-50 rounded-lg shadow-inner">
-                    <h2 class="text-xl font-bold text-gray-800 mb-3">UPDATED NEWS</h2>
-                    <div class="section-bg text-white p-3 mb-2 rounded-md font-semibold hover:dark-section-bg transition-colors duration-200 cursor-pointer">UPDATED NEWS</div>
-                    <div class="section-bg text-white p-3 mb-2 rounded-md font-semibold hover:dark-section-bg transition-colors duration-200 cursor-pointer">UPDATED NEWS</div>
-                    <div class="section-bg text-white p-3 rounded-md font-semibold hover:dark-section-bg transition-colors duration-200 cursor-pointer">UPDATED NEWS</div>
-                </div>
+            <div class="sidebar">
+                <img src="exam machine johnny 2.jpg" alt="Sidebar Image">
+            </div>
 
 
 
@@ -70,12 +57,22 @@
 
 
 
-                <!-- Mock Test, Exam Update, Book -->
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 p-3 bg-gray-50 rounded-lg shadow-inner">
-                    <button class="dark-section-bg text-white p-4 rounded-md text-center font-bold text-lg h-32 flex items-center justify-center hover:bg-purple-800 transition-colors duration-200">mock test</button>
-                    <button class="dark-section-bg text-white p-4 rounded-md text-center font-bold text-lg h-32 flex items-center justify-center hover:bg-purple-800 transition-colors duration-200">exam update</button>
-                    <button class="dark-section-bg text-white p-4 rounded-md text-center font-bold text-lg h-32 flex items-center justify-center hover:bg-purple-800 transition-colors duration-200">book</button>
-                </div>
+            <div class="main">
+
+                <h2>SUBJECTS</h2>
+                <ul>
+                    <li><a href="#">Mathematics</a></li>
+                    <li><a href="#">Science</a></li>
+                    <li><a href="#">History</a></li>
+                    <li><a href="#">Geography</a></li>
+                    <li><a href="#">English</a></li>
+                </ul>
+
+
+
+
+
+            </div>
 
 
 
@@ -85,31 +82,84 @@
 
 
 
+            <div class="right1">
 
-                <!-- Contact Form -->
-                <div class="p-4 bg-gray-50 rounded-lg shadow-inner relative flex-1">
-                    <h2 class="text-xl font-bold text-gray-800 mb-3">contact</h2>
-                    <input type="text" placeholder="Name" class="input-field w-full p-3 mb-3 rounded-md focus:outline-none focus:ring-2 focus:ring-dark-section-bg transition-colors duration-200">
-                    <input type="email" placeholder="Email id" class="input-field w-full p-3 mb-3 rounded-md focus:outline-none focus:ring-2 focus:ring-dark-section-bg transition-colors duration-200">
-                    <textarea placeholder="comment" class="input-field w-full p-3 mb-3 rounded-md min-h-[100px] resize-y focus:outline-none focus:ring-2 focus:ring-dark-section-bg transition-colors duration-200"></textarea>
-                    <button class="dark-section-bg text-white px-6 py-3 rounded-md font-semibold hover:bg-purple-800 transition-colors duration-200 block ml-auto">submit</button>
+                <section>
+                    <h1>ARTICLE</h1>
+                </section>
+               
 
-                    <!-- Privacy Policy Button - positioned absolutely to match image -->
-                    <button class="absolute bottom-4 right-4 section-bg text-white p-4 rounded-md text-center font-bold text-lg transform hover:scale-105 transition-transform duration-200">privacy policy</button>
-                </div>
+            </div>
 
 
-
-
-
+            <div class="right2">
+                 <section>
+                    <h1>blog</h1>
+                </section>
+            </div>
 
 
 
+            
+            <div class="right3">
+
+
+                <section>   <h1>Mock test</h1></section>
+                <section>   <h1>Exam update</h1></section>
+                <section>   <h1>Book</h1></section>
+
+
+            </div>
 
 
 
-            </section>
-        </main>
-    </div>
+
+
+
+            
+            <div class="bottom">
+
+                <h2>Contact Us</h2>
+                <form class="contact-form" action="#" method="post">
+                    <label for="name">Name:</label><br>
+                    <input type="text" id="name" name="name" required><br><br>
+
+                    <label for="email">Email:</label><br>
+                    <input type="email" id="email" name="email" required><br><br>
+
+                    <label for="message">Message:</label><br>
+                    <textarea id="message" name="message" rows="4" required></textarea><br><br>
+
+                    <button type="submit">Send</button>
+                </form>
+
+
+            </div>
+
+
+
+            <div class = "right4">
+                <section>
+                    <h1>About Us</h1>
+                    <p>We are dedicated to providing the best exam preparation resources.</p>
+                </section>
+
+                <section>
+                    <h1>Privacy Policy</h1>
+                    <p>Your privacy is important to us. Read our policy for more details.</p>
+                </section>
+
+                <section>
+                    <h1>Terms of Service</h1>
+                    <p>By using our site, you agree to our terms of service.</p>
+                </section>
+            </div>
+
+
+
+
+
+        </div>
+        
 </body>
 </html>

@@ -1,25 +1,105 @@
- body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f0f2f5; /* Light gray background */
-        }
+body{
+    background: linear-gradient(90deg,#12c2e9,#c471ed,#f64f59);
+    display: flex;
+   
+    height: 100%;
+}
+
+
+
 .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem;
-        }
-.header-bg {
-            background-color: #e0e0e0; /* Light gray for header background */
-        }
-.section-bg {
-            background-color: #a78bfa; /* Purple for sections */
-        }
-.dark-section-bg {
-            background-color: #8b5cf6; /* Darker purple for specific sections */
-        }
-.input-field {
-            background-color: #d8b4fe; /* Lighter purple for input fields */
-            color: #fff;
-        }
-.input-field::placeholder {
-            color: #eee;
-        }
+    width: 99.99%;
+    height: 99.99%;
+    border-radius: 1%;
+    background: white;
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 100px 1.5fr 1fr 1.5fr 1fr;
+    gap: 20px;
+    padding: 20px;
+    grid-template-areas:
+        "header header nav nav search"
+        "sidebar main main right1 right1"
+        "sidebar main main right2 right2"
+        "sidebar main main right3 right3"
+        "sidebar bottom bottom right4 right4";
+}
+
+/* Example area assignments for your HTML elements: */
+.header   { grid-area: header; }
+.nav      { grid-area: nav; }
+.search   { grid-area: search; }
+.sidebar  { grid-area: sidebar; }
+.main     { grid-area: main; }
+.right1   { grid-area: right1; }
+.right2   { grid-area: right2; }
+.right3   { grid-area: right3; }
+
+.bottom   { grid-area: bottom; }
+.right4   { grid-area: right4; }
+
+
+
+
+
+
+@media (max-width: 768px) {
+    body {
+        background: linear-gradient(90deg, #12c2e9, #c471ed, #f64f59);
+        
+        
+    }
+    .container {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        grid-template-areas:
+            "header"
+            "nav"
+            "search"
+            "sidebar"
+            "main"
+            "right1"
+            "right2"
+            "right3"
+            "bottom"
+            "right4";
+    }
+}
+
+/* Tablet (601px to 1024px) */
+@media (min-width: 601px) and (max-width: 1024px) {
+    body {
+        background: linear-gradient(90deg, #12c2e9, #c471ed, #f64f59);
+       
+    }
+    .container {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+        grid-template-areas:
+            "header header"
+            "nav search"
+            "sidebar main"
+            "right1 right2"
+            "right3 right3"
+            "bottom right4";
+    }
+}
+
+
+/* Big screens (1441px and up) */
+@media (min-width: 1441px) {
+    body {
+        background: linear-gradient(90deg, #12c2e9, #c471ed, #f64f59);
+    
+    }
+    .container {
+        grid-template-columns: 3fr 1fr 1fr 1fr 1fr;
+        grid-template-rows: 100px 1.5fr 1fr 1.5fr 1fr;
+        grid-template-areas:
+            "header header nav nav search"
+            "sidebar main main right1 right1"
+            "sidebar main main right2 right2"
+            "sidebar main main right3 right3"
+            "sidebar bottom bottom right4 right4";
+    }
+}
