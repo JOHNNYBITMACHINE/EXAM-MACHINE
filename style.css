@@ -45,8 +45,7 @@ body{
 
 @media (max-width: 678px) {
     .container {
-        display: flex;
-        flex-direction: column;
+       
         grid-template-columns: 1fr;
         grid-template-rows: 50px, 50px, 50px, 50px, 50px, 50px, 50px, 50px, 50px,
             50px;
