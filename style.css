@@ -1,62 +1,27 @@
 body{
-    background: linear-gradient(90deg,#12c2e9,#c471ed,#f64f59);
+    background: linear-gradient(90deg,#12c2e9,#fcfcfc,#f64f59, rgb(255, 0, 212), rgb(114, 90, 247));
     display: flex;
    
     height: 100%;
+    animation: johnny 015s ease-in-out infinite ;
+    background-size: 400% 400%;
+    
+    
+
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+@keyframes johnny {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
 
 
 
@@ -208,7 +173,8 @@ body{
     width: 99.99%;
     height: 99.99%;
     border-radius: 1%;
-    background: white;
+    background:linear-gradient(#0f0c29, #302b63, #24243e); ;
+    
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     grid-template-columns: 3fr 1fr 1fr 1fr 1fr;
