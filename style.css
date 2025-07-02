@@ -47,6 +47,8 @@ body{
     .container {
         display: grid;
         grid-template-columns: 100%;
+        grid-template-rows: auto;
+        /* Adjust the grid template areas for smaller screens */
         grid-template-areas:
             "header"
             "nav"
