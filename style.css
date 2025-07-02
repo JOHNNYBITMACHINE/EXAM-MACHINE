@@ -46,7 +46,7 @@ body{
 @media (max-width: 678px) {
     .container {
         display: grid;
-        grid-template-columns: 5%;
+        grid-template-columns: 100%;
         grid-template-areas:
             "header"
             "nav"
