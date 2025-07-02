@@ -217,7 +217,7 @@ body{
     padding: 20px;
     grid-template-areas:
         "header header nav nav search"
-        "sidebar main main article article"
+        "sidebar main-sub main-sub article article"
         "sidebar main-sub main-sub blog blog"
         "sidebar important important important important"
         "sidebar contact-form contact-form out-web out-web";
