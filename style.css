@@ -20,10 +20,10 @@ body{
     padding: 20px;
     grid-template-areas:
         "header header nav nav search"
-        "sidebar main main right1 right1"
-        "sidebar main main right2 right2"
-        "sidebar right3 right3 right3 right3"
-        "sidebar bottom bottom right4 right4";
+        "sidebar main main article article"
+        "sidebar main-sub main-sub blog blog"
+        "sidebar important important important important"
+        "sidebar contact-form contact-form out-web out-web";
 }
 
 /* Example area assignments for your HTML elements: */
@@ -31,13 +31,13 @@ body{
 .nav      { grid-area: nav; }
 .search   { grid-area: search; }
 .sidebar  { grid-area: sidebar; }
-.main     { grid-area: main; }
-.right1   { grid-area: right1; }
-.right2   { grid-area: right2; }
-.right3   { grid-area: right3; }
+.main-sub { grid-area: main-sub; }
+.article  { grid-area: article; }
+.blog     { grid-area: blog; }
+.important{ grid-area: important; }
 
-.bottom   { grid-area: bottom; }
-.right4   { grid-area: right4; }
+.contact-form   { grid-area: contact-form; }
+.out-web       { grid-area: out-web; }
 
 
 
@@ -45,9 +45,29 @@ body{
 
 @media (max-width: 678px) {
     .container {
-       
-        display: flex;
-        flex-direction: column;
-       
-}
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "header"
+            "nav"
+            "search"
+            "sidebar"
+            "main-sub"
+            "article"
+            "blog"
+            "important"
+            "contact-form"
+            "out-web";
+        gap: 20px;
+    }
+    .header        { grid-area: header; }
+    .nav           { grid-area: nav; }
+    .search        { grid-area: search; }
+    .sidebar       { grid-area: sidebar; }
+    .main-sub      { grid-area: main-sub; }
+    .article       { grid-area: article; }
+    .blog          { grid-area: blog; }
+    .important     { grid-area: important; }
+    .contact-form  { grid-area: contact-form; }
+    .out-web       { grid-area: out-web; }
 }
