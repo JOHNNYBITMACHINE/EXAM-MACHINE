@@ -48,16 +48,6 @@ body{
        
         display: flex;
         flex-direction: column;
-        grid-template-areas:
-            "header"
-            "nav"
-            "search"
-            "sidebar"
-            "main"
-            "right1"
-            "right2"
-            "right3"
-            "bottom"
-            "right4";
-    }
+       
+}
 }
