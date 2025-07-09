@@ -1,4 +1,4 @@
-// ...existing code...
+
 
 // Interactive Smoky Cursor Effect
 document.addEventListener('mousemove', function(e) {
