@@ -1,17 +1,98 @@
-body{
-    background: linear-gradient(90deg,#12c2e9,#ff00dd, rgb(114, 90, 247));
-    display: flex;
-   
+body {
+    
+    width: 100%;
     height: 100%;
-    animation: johnny 015s ease-in-out infinite ;
-    background-size: 400% 400%;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+    box-sizing: border-box;
+   
+    align-items: center; /* Center the container horizontally */
     
-    
+}
 
+.container {
+    
+    width: 99.7%;
+    max-width: 99.7%; /* Or any max width you prefer */
+    min-height: 100vh;
+    box-shadow: 10px 10px 20px #babecc, -10px -10px 20px #ffffff;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: 1fr 1.5fr 1fr 1fr 1fr;
+    grid-template-rows: 100px 1fr 1fr 1.5fr 1fr;
+    gap: 20px;
+    padding: 20px;
+    grid-template-areas: 
+        "header header nav nav nav"
+        "main main news news news"
+        "main main mock mock mock"
+        "main main mock mock mock"
+        "main main  contact contact contact";
+    margin: 0 auto;
+    box-sizing: border-box;
+    border-radius: 20px;
+
+    background: 
+        linear-gradient(white, white) padding-box,
+        linear-gradient(90deg, #20bdff, #5433ff, #e442ce) border-box;
+    border: 2px solid transparent;
+   
+    
+    
 }
 
 
-@keyframes johnny {
+
+
+
+
+
+
+/* Header styles */
+
+
+
+
+
+.header {
+    width: 90%;
+    height: 100px;
+    margin: 0 auto;
+    grid-area: header;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: center;
+    background: none; /* Remove background from .header */
+    box-shadow: none;
+    padding: 0;
+}
+.header h1 {
+    width: 80%;
+    
+   
+    display: inline-block;
+    font-size: 50px;
+    color: white;
+    text-align: center;
+    margin: 0 auto;
+    padding: 10px 30px;
+    
+    border-radius: 15px;
+    box-shadow: 10px 10px 20px #babecc, -10px -10px 20px #ffffff;
+    background: linear-gradient(270deg, #7ad4b9, #3b4ce4, #7ad4b9, #e442ce);
+    background-size: 400% 400%;
+    animation: h1-gradient-move 10s ease-in-out infinite;
+
+  
+
+
+}
+
+@keyframes h1-gradient-move {
     0% {
         background-position: 0% 50%;
     }
@@ -31,208 +112,414 @@ body{
 
 
 
+/* Navigation styles */
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.container {
-    width: 99.99%;
-    height: 99.99%;
-    border-radius: 1%;
-    background:linear-gradient(#0f0c29, #302b63, #24243e); ;
+.navigation{
     
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    grid-template-columns: 3fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 100px 1.5fr 1fr 1.5fr 1fr;
+    grid-area: nav;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px; 
+    backdrop-filter: blur(10px);
+    box-shadow: 0px 0px 30px rgba(227,228,237,0.37);
+    border: 2px solid rgba(255,255,255,0.1);
+
+  
+}
+.navigation a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+.navigation nav {
+    width: 60%;
+    border-radius: 30px;
+    box-shadow: 0px 10px 20px #babecc, -1px -1px 2px #ffffff;
+    background: linear-gradient(270deg,#ec288d,#2c17e7 ,#ec218a,#6456e4);
+    background-size: 400% 400%;
+    font-size: 22px;
+    font-weight: 600;
+    color: white;
+    transition:transform 0.8s;
+    position: relative;
+    z-index: 1;
+    
+}
+
+
+.navigation nav:hover {
+    background-position: 100% 0;
+   
+    transform: translateX(-28px) scale(1.2);
+    cursor: pointer;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+/*main content styles */
+
+.news a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.news li {
+    list-style: none;
+}
+
+
+
+
+
+.news{grid-area: news;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     gap: 20px;
     padding: 20px;
-    grid-template-areas:
-        "header header nav nav search"
-        "sidebar main-sub main-sub article article"
-        "sidebar main-sub main-sub blog blog"
-        "important important important important important"
-        "contact-form contact-form contact-form out-web out-web";
+   
+    box-shadow: 10px 10px 20px #babecc, -10px -10px 20px #ffffff;
+    gap: 20px;
+    border-radius: 20px;
+    margin-bottom: 40px;
+    margin-top: 40px;
+    
 }
 
-/* Example area assignments for your HTML elements: */
-.header   { grid-area: header; }
-.nav      { grid-area: nav; }
-.search   { grid-area: search; }
-.sidebar  { grid-area: sidebar; }
-.main-sub { grid-area: main-sub; }
-.article  { grid-area: article; }
-.blog     { grid-area: blog; }
-.important{ grid-area: important; }
 
-.contact-form   { grid-area: contact-form; }
-.out-web       { grid-area: out-web; }
+.global-news {
+    background: linear-gradient(135deg, #00c3ff 0%, #ffff1c 100%);
+    background-size: 400% 400%;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 20px #babecc, -10px -10px 20px #ffffff;
+    color: rgb(255, 255, 255);
+    transition: transform 0.8s;
+}
+
+.india-news {
+    background: linear-gradient(135deg, #f7971e 0%, #ffd200 100%);
+    background-size: 400% 400%;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 20px #babecc, -10px -10px 20px #ffffff;
+    color: rgb(0, 134, 243);
+}
+
+.science-news {
+    background: linear-gradient(135deg, #43cea2 0%, #185a9d 100%);
+    background-size: 400% 400%;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 20px #babecc, -10px -10px 20px #ffffff;
+    color: white;
+}
+
+.political-news {
+    background: linear-gradient(135deg, #ff512f 0%, #dd2476 100%);
+    background-size: 400% 400%;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 20px #babecc, -10px -10px 20px #ffffff;
+    color: rgb(255, 255, 255);
+}
+
+.news section{
+    width: 100%;
+   
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    
+    padding: 10px;
+    border-radius: 10px;
+    
+    transition:transform 0.5s;
+    position: relative;
+    z-index: 1;
+}
+
+.news section:hover {
+    background-position: 100% 0;
+    color: white;
+   
+    transform: translateX(-28px) scale(1.2);
+    cursor: pointer;
+    transition: transform 0.8s;
+
+}
+
+
+
+/*main subject styles */
+
+.container-subject li{
+    list-style: none;
+    margin: 10px 0;
+}
+
+.container-subject a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container-subject h1{
+   font-size: 2.5rem;
+    color: #133ec9;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 600;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    text-decoration: underline 4px solid #cf4109b4;
+}
+
+
+.container-subject{
+     grid-area: main;
+    width: 90%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    margin: 0;
+    padding: 20px;
+    box-shadow: 10px 10px 20px #babecc, -10px -10px 20px #ffffff;
+    border-radius: 20px;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+.container-subject section{
+    width: 100%;
+    height: auto;
+   box-shadow: 10px 10px 20px #babecc, -1px -1px 2px #ffffff;
+   justify-content: center;
+   align-items: center;
+   display: flex;
+    flex-direction: column;
+    border-radius: 30px;
+
+}
+
+
+
+.container-subject section:nth-child(2) {
+    background: linear-gradient(135deg, #c31432, #240b36);
+    color: #fff;
+}
+.container-subject section:nth-child(3) {
+    background: linear-gradient(135deg, #f12711, #f5af19);
+    color: #fff;
+}
+.container-subject section:nth-child(4) {
+    background: linear-gradient(135deg, #00b09b, #96c93d);
+    color: #fff;
+}
+.container-subject section:nth-child(5) {
+    background: linear-gradient(135deg, #5433ff, #20bdff, #a5fecb);
+    color: #fff;
+}
+.container-subject section:nth-child(6) {
+    background: linear-gradient(135deg, #f7971e, #ffd200);
+    color: #fff;
+}
+.container-subject section:nth-child(7) {
+    background: linear-gradient(135deg, #f6d365, #fda085);
+    color: #fff;
+}
+.container-subject section:nth-child(8) {
+    background: linear-gradient(135deg, #fdcbf1, #e6dee9);
+    color: #333;
+}
+.container-subject section:nth-child(9) {
+    background: linear-gradient(135deg, #f9d423, #ff4e50);
+    color: #fff;
+}
+.container-subject section:nth-child(10) {
+    background: linear-gradient(135deg, #30cfd0, #330867);
+    color: #fff;
+}
+.container-subject section:nth-child(11) {
+    background: linear-gradient(135deg, #a8edea, #fed6e3);
+    color: #333;
+}
+.container-subject section:nth-child(12) {
+    background: linear-gradient(135deg, #43cea2, #185a9d);
+    color: #fff;
+}
 
 
 
 
 
-@media (max-width: 678px) {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.container-mock{grid-area: mock;
+}
+
+
+
+
+.contact-us{grid-area: contact;
+;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 900px) {
     .container {
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-        /* Adjust the grid template areas for smaller screens */
-        grid-template-areas:
-            "header"
-            "nav"
-            "search"
-            "sidebar"
-            "main-sub"
-            "article"
-            "blog"
-            "important"
-            "contact-form"
-            "out-web";
-        gap: 5px;
+        display: flex;
+        flex-direction: column;
     }
-    .header        { grid-area: header; }
-    .nav           { grid-area: nav; }
-    .search        { grid-area: search; }
-    .sidebar       { grid-area: sidebar; }
-    .main-sub      { grid-area: main-sub; }
-    .article       { grid-area: article; }
-    .blog          { grid-area: blog; }
-    .important     { grid-area: important; }
-    .contact-form  { grid-area: contact-form; }
-    .out-web       { grid-area: out-web; }
+    .navigation {
+        flex-direction: column;
+        align-items: center;
+    }
+    .container-subject {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .news {
+        flex-direction: column;
+        align-items: center;
+    }
 }
+
+@media (max-width: 600px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+    }
+    .navigation {
+        flex-direction: column;
+        align-items: center;
+    }
+    .news {
+        flex-direction: column;
+        align-items: center;
+    }
+    .container-subject {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+
+
+
+
+
+
+.smoke-cursor {
+    position: fixed;
+    pointer-events: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(4, 235, 73, 0.25) 10%, rgba(198, 241, 5, 0.12) 80%, transparent 10%);
+    opacity: 0.7;
+    transform: scale(1);
+    transition: opacity 0.7s, transform 0.7s;
+    z-index: 9999;
+    will-change: opacity, transform;
+}
+
+
+
+
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animate all direct children of .container-subject except h1 */
+.container-subject > * {
+  opacity: 0;
+  animation: fadeInUp 0.7s forwards;
+}
+
+.container-subject > *:nth-child(1) { animation-delay: 0.4s; }
+.container-subject > *:nth-child(2) { animation-delay: 0.8s; }
+.container-subject > *:nth-child(3) { animation-delay: 1.2s; }
+.container-subject > *:nth-child(4) { animation-delay: 1.6s; }
+.container-subject > *:nth-child(5) { animation-delay: 2s; }
+.container-subject > *:nth-child(6) { animation-delay: 2.4s; }
+.container-subject > *:nth-child(7) { animation-delay: 2.8s; }
+.container-subject > *:nth-child(8) { animation-delay: 3.2s; }
+.container-subject > *:nth-child(9) { animation-delay: 3.6s; }
+.container-subject > *:nth-child(10) { animation-delay: 4s; }
+.container-subject > *:nth-child(11) { animation-delay: 4.4s; }
+
+  
