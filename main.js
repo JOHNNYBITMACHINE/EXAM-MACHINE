@@ -73,3 +73,52 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    // ...existing sidebar code...
+
+    // Auth modal logic
+    const authModal = document.getElementById('auth-modal');
+    const authModalClose = document.getElementById('auth-modal-close');
+    const loginTab = document.getElementById('login-tab');
+    const signupTab = document.getElementById('signup-tab');
+    const loginForm = document.getElementById('login-form');
+    const signupForm = document.getElementById('signup-form');
+
+    // Open modal on Login link click (sidebar or anywhere)
+    document.querySelectorAll('a[href="login.html"]').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            authModal.classList.add('open');
+            loginTab.classList.add('active');
+            signupTab.classList.remove('active');
+            loginForm.style.display = '';
+            signupForm.style.display = 'none';
+        });
+    });
+
+    // Close modal
+    authModalClose.addEventListener('click', function() {
+        authModal.classList.remove('open');
+    });
+    // Close modal when clicking outside content
+    authModal.addEventListener('click', function(e) {
+        if (e.target === authModal) authModal.classList.remove('open');
+    });
+
+    // Tab switching
+    loginTab.addEventListener('click', function() {
+        loginTab.classList.add('active');
+        signupTab.classList.remove('active');
+        loginForm.style.display = '';
+        signupForm.style.display = 'none';
+    });
+    signupTab.addEventListener('click', function() {
+        signupTab.classList.add('active');
+        loginTab.classList.remove('active');
+        signupForm.style.display = '';
+        loginForm.style.display = 'none';
+    });
+});
