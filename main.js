@@ -35,3 +35,41 @@ document.addEventListener('mousemove', function(e) {
         smoke.remove();
     }, 900);
 });
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const sidebar = document.getElementById('sidebar');
+    const toggleBtn = document.getElementById('sidebar-toggle');
+
+    // Ensure sidebar is scrollable for all items
+    sidebar.style.overflowY = 'auto';
+    sidebar.style.maxHeight = '100vh';
+
+    // Toggle sidebar on button click
+    toggleBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        if (sidebar.classList.contains('open')) {
+            sidebar.classList.remove('open');
+        } else {
+            sidebar.classList.add('open');
+        }
+    });
+
+    // Close sidebar if click outside or on any link
+    document.addEventListener('click', function (e) {
+        if (
+            sidebar.classList.contains('open') &&
+            !sidebar.contains(e.target) &&
+            e.target !== toggleBtn
+        ) {
+            sidebar.classList.remove('open');
+        }
+    });
+
+    // Close sidebar on link click (for mobile/UX)
+    sidebar.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            sidebar.classList.remove('open');
+        });
+    });
+});
