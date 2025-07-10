@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EXAM BOOK</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
 
@@ -49,6 +50,14 @@
                         <nav>
                             <ul><a href="login.html">Login</a></ul>
 
+                        </nav>
+
+                        <nav>
+                            <ul>
+                                <li id="login-nav">
+                                    <div id="g_id_signin"></div>
+                                </li>
+                            </ul>
                         </nav>
 
                         
@@ -226,13 +235,25 @@
 
 
                     <div class="contact-us">
+
+
                                         <section class="contact">
-                                            <h2><li><a href="contact-us.html"> Contact Us</a></li></h2>
+                                            <h2>
+                                                <li>
+                                                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=exambookteam@gmail.com" target="_blank">
+                                                    Contact Us
+                                                </a>
+                                                </li>
+                                            </h2>
                                         </section>
+
+
+
 
                                         <section class="about">
                                             <h2><li><a href="about-us.html"> About Us</a></li></h2>
                                         </section>
+
 
                                         <section class="privacy">
                                             <h2><li><a href="privacy-policy.html"> Privacy Policy</a></li></h2>
@@ -258,7 +279,9 @@
 
     <div class="sidebar" id="sidebar">
             <ul>
-                <li><a href="login.html">🔑 Login</a></li>
+                        <li id="sidebar-login">
+                        <div id="g_id_signin_sidebar"></div>
+                        </li>
                 <li><a href="#">🏠 Home</a></li>
                 <li><a href="Exam-update.html">📝 Exam Update</a></li>
                 <li><a href="blog.html">📰 Blog</a></li>
@@ -303,39 +326,11 @@
                 
             </ul>
 
-    </div>
-
-
-
-
-
-        <div id="auth-modal" class="auth-modal">
-            <div class="auth-modal-content">
-                <span class="auth-modal-close" id="auth-modal-close">&times;</span>
-                <div class="auth-tabs">
-                <button id="login-tab" class="active">Login</button>
-                <button id="signup-tab">Sign Up</button>
-                </div>
-                <div id="login-form" class="auth-form">
-                <h2>Login</h2>
-                <input type="text" placeholder="Name" />
-                <input type="password" placeholder="Password" />
-                <button>Login</button>
-                </div>
-
-
-                <div id="signup-form" class="auth-form" style="display:none;">
-                <h2>Sign Up</h2>
-                <input type="text" placeholder="Name" />
-                <input type="text" placeholder="State" />
-                <input type="email" placeholder="Email" />
-                <input type="password" placeholder="Password" />
-                <button>Sign Up</button>
-                </div>
-            </div>
-
-            
         </div>
+
+
+
+
 
 
 

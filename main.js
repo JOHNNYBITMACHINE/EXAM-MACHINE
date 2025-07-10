@@ -75,50 +75,68 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+// ...existing code...
 
-document.addEventListener('DOMContentLoaded', function () {
-    // ...existing sidebar code...
+// Replace with your Google OAuth Client ID
+const CLIENT_ID = '614071344251-gvq30u4a69tpcb71c9e2vjmth0ldiqe5.apps.googleusercontent.com';
 
-    // Auth modal logic
-    const authModal = document.getElementById('auth-modal');
-    const authModalClose = document.getElementById('auth-modal-close');
-    const loginTab = document.getElementById('login-tab');
-    const signupTab = document.getElementById('signup-tab');
-    const loginForm = document.getElementById('login-form');
-    const signupForm = document.getElementById('signup-form');
+function handleCredentialResponse(response) {
+    const data = parseJwt(response.credential);
+    const userName = data.name || data.email;
+    // Update navigation
+    document.getElementById('login-nav').innerHTML = `<span style="display:flex;align-items:center;"><img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png" alt="Gmail" style="width:24px;height:24px;margin-right:6px;">${userName}</span>`;
+    // Update sidebar
+    document.getElementById('sidebar-login').innerHTML = `
+        <span style="display:flex;align-items:center;"><img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png" alt="Gmail" style="width:24px;height:24px;margin-right:6px;">${userName}</span>
+        <button id="signout-btn" style="margin-left:10px;">Sign Out</button>
+    `;
+    document.getElementById('signout-btn').onclick = signOut;
+    // Store login state
+    localStorage.setItem('userName', userName);
+}
 
-    // Open modal on Login link click (sidebar or anywhere)
-    document.querySelectorAll('a[href="login.html"]').forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            authModal.classList.add('open');
-            loginTab.classList.add('active');
-            signupTab.classList.remove('active');
-            loginForm.style.display = '';
-            signupForm.style.display = 'none';
+function signOut() {
+    google.accounts.id.disableAutoSelect();
+    localStorage.removeItem('userName');
+    location.reload();
+}
+
+function parseJwt(token) {
+    var base64Url = token.split('.')[1];
+    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+    return JSON.parse(jsonPayload);
+}
+
+window.onload = function() {
+    const userName = localStorage.getItem('userName');
+    if (userName) {
+        // Already logged in
+        document.getElementById('login-nav').innerHTML = `<span style="display:flex;align-items:center;"><img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png" alt="Gmail" style="width:24px;height:24px;margin-right:6px;">${userName}</span>`;
+        document.getElementById('sidebar-login').innerHTML = `
+            <span style="display:flex;align-items:center;"><img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png" alt="Gmail" style="width:24px;height:24px;margin-right:6px;">${userName}</span>
+            <button id="signout-btn" style="margin-left:10px;">Sign Out</button>
+        `;
+        document.getElementById('signout-btn').onclick = signOut;
+    } else {
+        // Show Google Sign-In button with auto_select
+        google.accounts.id.initialize({
+            client_id: CLIENT_ID,
+            callback: handleCredentialResponse,
+            auto_select: true // This will try to auto sign-in if possible
         });
-    });
+        google.accounts.id.renderButton(
+            document.getElementById("g_id_signin"),
+            { theme: "outline", size: "large", logo_alignment: "left", text: "signin_with", shape: "rectangular" }
+        );
+        google.accounts.id.renderButton(
+            document.getElementById("g_id_signin_sidebar"),
+            { theme: "outline", size: "large", logo_alignment: "left", text: "signin_with", shape: "rectangular" }
+        );
+        google.accounts.id.prompt(); // Shows the One Tap prompt if possible
+    }
+};
 
-    // Close modal
-    authModalClose.addEventListener('click', function() {
-        authModal.classList.remove('open');
-    });
-    // Close modal when clicking outside content
-    authModal.addEventListener('click', function(e) {
-        if (e.target === authModal) authModal.classList.remove('open');
-    });
-
-    // Tab switching
-    loginTab.addEventListener('click', function() {
-        loginTab.classList.add('active');
-        signupTab.classList.remove('active');
-        loginForm.style.display = '';
-        signupForm.style.display = 'none';
-    });
-    signupTab.addEventListener('click', function() {
-        signupTab.classList.add('active');
-        loginTab.classList.remove('active');
-        signupForm.style.display = '';
-        loginForm.style.display = 'none';
-    });
-});
+// ...existing code...
