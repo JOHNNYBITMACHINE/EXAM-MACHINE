@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function () {
 // ...existing code...
 
 // Replace with your Google OAuth Client ID
-const CLIENT_ID = '614071344251-gvq30u4a69tpcb71c9e2vjmth0ldiqe5.apps.googleusercontent.com';
+const CLIENT_ID = '';
 
 function handleCredentialResponse(response) {
     const data = parseJwt(response.credential);
