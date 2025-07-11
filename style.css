@@ -13,7 +13,7 @@ body {
     
 }
 
-.container {
+.containerc {
     
     width: 99.7%;
     max-width: 99.7%; /* Or any max width you prefer */
@@ -398,14 +398,16 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-    gap: 20px;
+    gap: 10px;
+    padding: 20px;
     align-items: stretch;
     justify-items: stretch;
     width: 96%;
     height: 90%;
-    margin: 2% auto;
+    padding: 5%;
+    margin: 1% auto;
     border-radius: 18px;
-    background: #fff;
+    background: linear-gradient(120deg, #e0e7ff 0%, #fbefff 100%);
     box-sizing: border-box;
     box-shadow: 0 4px 24px rgba(0,0,0,0.06);
     min-height: 0;
@@ -413,8 +415,8 @@ body {
 }
 
 .container-mock .mock-item {
-    width: 100%;
-    height: 100%;
+    width: 96%;
+    height: 90%;
     padding: 0;
     display: flex;
     align-items: center;
@@ -425,7 +427,7 @@ body {
     font-weight: bold;
     font-size: 2.2rem;
     box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-    margin: 0;
+    margin: 0px auto;
     transition:transform 0.8s;
     position: relative;
     z-index: 1;
@@ -579,7 +581,7 @@ body {
         width: 100%;
         height: 80px;
     }
-    .container {
+    .containerc {
         display: flex !important;
         flex-direction: column !important;
         gap: 20px !important;
@@ -645,7 +647,7 @@ body {
         width: 100%;
         height: 80px;
     }
-    .container {
+    .containerc {
         display: flex;
         flex-direction: column;
         gap: 20px !important;
@@ -882,17 +884,25 @@ body {
     color: #fff;
     text-decoration: none;
     font-size: 1.3rem;
-    padding: 10px 0;
-    transition: background 0.5s, color 0.5s;
-    border-radius: 10px;
+    padding: 12px 0;
+    border-radius: 14px;
+    background: linear-gradient(120deg, #5433ff 0%, #20bdff 100%);
+    box-shadow: 0 4px 16px rgba(32, 189, 255, 0.15), 0 1.5px 8px rgba(84, 51, 255, 0.10);
+    transition: 
+        background 0.5s, 
+        color 0.5s, 
+        box-shadow 0.4s, 
+        transform 0.3s;
+    margin: 6px 18px;
 }
 
 .sidebar a:hover {
-    background: linear-gradient(#83a4d4,#b6fbff);
-    color: #5e0be4;
-    transform: translateX(20px) scale(1.1);
-    transition: transform .8s ease-in-out;
+    background: linear-gradient(120deg, #e442ce 0%, #5433ff 100%);
+    color: #fff;
+    box-shadow: 0 8px 32px rgba(84, 51, 255, 0.22), 0 2px 12px rgba(228, 66, 206, 0.12);
+    transform: translateY(-4px) scale(1.06);
 }
+
 
 @media (max-width: 700px) {
     .sidebar {
@@ -991,3 +1001,42 @@ body {
   margin-top: 8px;
 }
 
+
+
+/* ...existing code... */
+
+.digital-clock {
+  margin-top: 20px;
+  color: #fff;
+  background: linear-gradient(270deg, #20bdff, #bab5d6, #e442ce, #20bdff);
+  background-size: 600% 600%;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 2.2rem;
+  letter-spacing: 2px;
+  text-align: center;
+  margin-bottom: 18px;
+  font-weight: bold;
+  border-radius: 14px;
+  padding: 12px 0;
+  box-shadow: 0 4px 24px rgba(32,189,255,0.12), 0 1.5px 8px rgba(84,51,255,0.08);
+  animation: digitalClockGradientMove 20s ease-in-out infinite;
+  transition: background 1s;
+}
+
+@keyframes digitalClockGradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 50% 100%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  75% {
+    background-position: 50% 0%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

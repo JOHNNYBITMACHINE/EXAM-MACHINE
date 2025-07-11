@@ -140,3 +140,18 @@ window.onload = function() {
 };
 
 // ...existing code...
+
+
+// ...existing code...
+function updateDigitalClock() {
+    const now = new Date();
+    const h = String(now.getHours()).padStart(2, '0');
+    const m = String(now.getMinutes()).padStart(2, '0');
+    const s = String(now.getSeconds()).padStart(2, '0');
+    const clock = document.getElementById('flip-clock');
+    if (clock) {
+        clock.textContent = `${h}:${m}:${s}`;
+    }
+}
+setInterval(updateDigitalClock, 1000);
+updateDigitalClock();
