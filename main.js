@@ -143,6 +143,9 @@ window.onload = function() {
 
 
 // ...existing code...
+// ...existing code...
+
+// Digital clock update
 function updateDigitalClock() {
     const now = new Date();
     const h = String(now.getHours()).padStart(2, '0');
@@ -155,3 +158,4 @@ function updateDigitalClock() {
 }
 setInterval(updateDigitalClock, 1000);
 updateDigitalClock();
+
