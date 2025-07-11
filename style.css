@@ -475,13 +475,15 @@ body {
     list-style: none;
 }
 
+/* ...existing code... */
+
 .contact-us {
     grid-area: contact;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: flex-start;
-    gap: 40px;
+    align-items: stretch;
+    gap: 32px;
     padding: 32px 40px;
     background: linear-gradient(120deg, #e0e7ff 0%, #fbefff 100%);
     border-radius: 20px;
@@ -489,10 +491,68 @@ body {
     margin: 20px 0;
     min-height: 180px;
     transition: box-shadow 0.3s;
-;
 }
 
+.contact-card {
+    flex: 1 1 0;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(60, 60, 180, 0.07);
+    padding: 24px 18px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    min-width: 0;
+}
 
+.contact-card:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 8px 32px rgba(60, 60, 180, 0.13);
+    background: linear-gradient(120deg, #fbefff 0%, #e0e7ff 100%);
+}
+
+.contact-icon {
+    font-size: 2.2rem;
+    margin-right: 10px;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.contact-card h2 {
+    margin: 0 0 8px 0;
+    font-size: 1.2rem;
+    color: #3b4ce4;
+    font-weight: 700;
+}
+
+.contact-card a {
+    color: #6a11cb;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+    word-break: break-all;
+}
+
+.contact-card a:hover {
+    color: #e442ce;
+    text-decoration: underline;
+}
+
+/* Responsive for mobile */
+@media (max-width: 900px) {
+    .contact-us {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px 10px;
+    }
+    .contact-card {
+        width: 100%;
+        padding: 18px 12px;
+    }
+}
+
+/* ...existing code... */
 
 
 
@@ -813,6 +873,7 @@ body {
 .sidebar ul li:nth-child(31) { animation-delay: 5.9s; }
 .sidebar ul li:nth-child(32) { animation-delay: 6.1s; }
 .sidebar ul li:nth-child(33) { animation-delay: 6.2s; }
+.sidebar ul li:nth-child(34) { animation-delay: 6.4s; }
 
 .sidebar a {
     display: flex;
