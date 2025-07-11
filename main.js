@@ -78,20 +78,54 @@ document.addEventListener('DOMContentLoaded', function () {
 // ...existing code...
 
 // Replace with your Google OAuth Client ID
+
+
+// ...existing code...
+
+
+// ...existing code...
+// ...existing code...
+
+// Digital clock update
+function updateDigitalClock() {
+    const now = new Date();
+    const h = String(now.getHours()).padStart(2, '0');
+    const m = String(now.getMinutes()).padStart(2, '0');
+    const s = String(now.getSeconds()).padStart(2, '0');
+    const clock = document.getElementById('flip-clock');
+    if (clock) {
+        clock.textContent = `${h}:${m}:${s}`;
+    }
+}
+setInterval(updateDigitalClock, 1000);
+updateDigitalClock();
+
+
+// Google Sign-In initialization
+
 const CLIENT_ID = '214703497000-hhsl925vqj47elf2b84jl9end0hm8quk.apps.googleusercontent.com';
 
 function handleCredentialResponse(response) {
     const data = parseJwt(response.credential);
     const userName = data.name || data.email;
     // Update navigation
-    document.getElementById('login-nav').innerHTML = `<span style="display:flex;align-items:center;"><img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png" alt="Gmail" style="width:24px;height:24px;margin-right:6px;">${userName}</span>`;
+    document.getElementById('login-nav').innerHTML = `
+        <span style="display:flex;align-items:center;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png" alt="Gmail" style="width:24px;height:24px;margin-right:6px;">
+            ${userName}
+        </span>
+        <button id="signout-btn-nav" style="margin-left:10px;">Sign Out</button>
+    `;
     // Update sidebar
     document.getElementById('sidebar-login').innerHTML = `
-        <span style="display:flex;align-items:center;"><img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png" alt="Gmail" style="width:24px;height:24px;margin-right:6px;">${userName}</span>
-        <button id="signout-btn" style="margin-left:10px;">Sign Out</button>
+        <span style="display:flex;align-items:center;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png" alt="Gmail" style="width:24px;height:24px;margin-right:6px;">
+            ${userName}
+        </span>
+        <button id="signout-btn-sidebar" style="margin-left:10px;">Sign Out</button>
     `;
-    document.getElementById('signout-btn').onclick = signOut;
-    // Store login state
+    document.getElementById('signout-btn-nav').onclick = signOut;
+    document.getElementById('signout-btn-sidebar').onclick = signOut;
     localStorage.setItem('userName', userName);
 }
 
@@ -114,18 +148,28 @@ window.onload = function () {
     const userName = localStorage.getItem('userName');
     if (userName) {
         // Already logged in
-        document.getElementById('login-nav').innerHTML = `<span style="display:flex;align-items:center;"><img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png" alt="Gmail" style="width:24px;height:24px;margin-right:6px;">${userName}</span>`;
-        document.getElementById('sidebar-login').innerHTML = `
-            <span style="display:flex;align-items:center;"><img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png" alt="Gmail" style="width:24px;height:24px;margin-right:6px;">${userName}</span>
-            <button id="signout-btn" style="margin-left:10px;">Sign Out</button>
+        document.getElementById('login-nav').innerHTML = `
+            <span style="display:flex;align-items:center;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png" alt="Gmail" style="width:24px;height:24px;margin-right:6px;">
+                ${userName}
+            </span>
+            <button id="signout-btn-nav" style="margin-left:10px;">Sign Out</button>
         `;
-        document.getElementById('signout-btn').onclick = signOut;
+        document.getElementById('sidebar-login').innerHTML = `
+            <span style="display:flex;align-items:center;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png" alt="Gmail" style="width:24px;height:24px;margin-right:6px;">
+                ${userName}
+            </span>
+            <button id="signout-btn-sidebar" style="margin-left:10px;">Sign Out</button>
+        `;
+        document.getElementById('signout-btn-nav').onclick = signOut;
+        document.getElementById('signout-btn-sidebar').onclick = signOut;
     } else {
-        // Show Google Sign-In button with auto_select
+        // Show Google Sign-In button
         google.accounts.id.initialize({
             client_id: CLIENT_ID,
             callback: handleCredentialResponse,
-            auto_select: true // This will try to auto sign-in if possible
+            auto_select: true
         });
         google.accounts.id.renderButton(
             document.getElementById("g_id_signin"),
@@ -135,26 +179,6 @@ window.onload = function () {
             document.getElementById("g_id_signin_sidebar"),
             { theme: "outline", size: "large", logo_alignment: "left", text: "signin_with", shape: "rectangular" }
         );
-        google.accounts.id.prompt(); // Shows the One Tap prompt if possible
+        google.accounts.id.prompt();
     }
 };
-
-// ...existing code...
-
-
-// ...existing code...
-// ...existing code...
-
-// Digital clock update
-function updateDigitalClock() {
-    const now = new Date();
-    const h = String(now.getHours()).padStart(2, '0');
-    const m = String(now.getMinutes()).padStart(2, '0');
-    const s = String(now.getSeconds()).padStart(2, '0');
-    const clock = document.getElementById('flip-clock');
-    if (clock) {
-        clock.textContent = `${h}:${m}:${s}`;
-    }
-}
-setInterval(updateDigitalClock, 1000);
-updateDigitalClock();
