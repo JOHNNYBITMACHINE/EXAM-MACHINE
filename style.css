@@ -58,7 +58,6 @@ body {
 
 
 .header {
-   
     width: 90%;
     height: 100px;
     margin: 0 auto;
@@ -118,7 +117,6 @@ body {
 
 
 .navigation{
-    
     
     grid-area: nav;
     display: flex;

@@ -1,7 +1,7 @@
 // ...existing code...
 
 // Interactive Smoky Cursor Effect
-document.addEventListener('mousemove', function(e) {
+document.addEventListener('mousemove', function (e) {
     const smoke = document.createElement('div');
     smoke.className = 'smoke-cursor';
 
@@ -17,8 +17,8 @@ document.addEventListener('mousemove', function(e) {
     const size = 18 + Math.random() * 24;
     const rotate = Math.random() * 360;
 
-    smoke.style.left = (e.clientX - size/2) + 'px';
-    smoke.style.top = (e.clientY - size/2) + 'px';
+    smoke.style.left = (e.clientX - size / 2) + 'px';
+    smoke.style.top = (e.clientY - size / 2) + 'px';
     smoke.style.width = size + 'px';
     smoke.style.height = size + 'px';
     smoke.style.background = `radial-gradient(circle, ${color} 0%, transparent 80%)`;
@@ -78,42 +78,22 @@ document.addEventListener('DOMContentLoaded', function () {
 // ...existing code...
 
 // Replace with your Google OAuth Client ID
-// ...existing code...
-
-const CLIENT_ID = "214703497000-hhsl925vqj47elf2b84jl9end0hm8quk.apps.googleusercontent.com";
+const CLIENT_ID = '214703497000-hhsl925vqj47elf2b84jl9end0hm8quk.apps.googleusercontent.com';
 
 function handleCredentialResponse(response) {
     const data = parseJwt(response.credential);
     const userName = data.name || data.email;
-    // Update UI with user info
-    document.getElementById('login-nav').innerHTML = `<span>${userName}</span>`;
-    document.getElementById('sidebar-login').innerHTML = `<span>${userName}</span><button id="signout-btn">Sign Out</button>`;
+    // Update navigation
+    document.getElementById('login-nav').innerHTML = `<span style="display:flex;align-items:center;"><img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png" alt="Gmail" style="width:24px;height:24px;margin-right:6px;">${userName}</span>`;
+    // Update sidebar
+    document.getElementById('sidebar-login').innerHTML = `
+        <span style="display:flex;align-items:center;"><img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png" alt="Gmail" style="width:24px;height:24px;margin-right:6px;">${userName}</span>
+        <button id="signout-btn" style="margin-left:10px;">Sign Out</button>
+    `;
     document.getElementById('signout-btn').onclick = signOut;
+    // Store login state
     localStorage.setItem('userName', userName);
 }
-
-window.onload = function() {
-    const userName = localStorage.getItem('userName');
-    if (userName) {
-        document.getElementById('login-nav').innerHTML = `<span>${userName}</span>`;
-        document.getElementById('sidebar-login').innerHTML = `<span>${userName}</span><button id="signout-btn">Sign Out</button>`;
-        document.getElementById('signout-btn').onclick = signOut;
-    } else {
-        google.accounts.id.initialize({
-            client_id: CLIENT_ID,
-            callback: handleCredentialResponse
-        });
-        google.accounts.id.renderButton(
-            document.getElementById("g_id_signin"),
-            { theme: "outline", size: "large" }
-        );
-        google.accounts.id.renderButton(
-            document.getElementById("g_id_signin_sidebar"),
-            { theme: "outline", size: "large" }
-        );
-        google.accounts.id.prompt();
-    }
-};
 
 function signOut() {
     google.accounts.id.disableAutoSelect();
@@ -124,10 +104,57 @@ function signOut() {
 function parseJwt(token) {
     var base64Url = token.split('.')[1];
     var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-    var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+    var jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
         return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
     }).join(''));
     return JSON.parse(jsonPayload);
 }
 
+window.onload = function () {
+    const userName = localStorage.getItem('userName');
+    if (userName) {
+        // Already logged in
+        document.getElementById('login-nav').innerHTML = `<span style="display:flex;align-items:center;"><img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png" alt="Gmail" style="width:24px;height:24px;margin-right:6px;">${userName}</span>`;
+        document.getElementById('sidebar-login').innerHTML = `
+            <span style="display:flex;align-items:center;"><img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png" alt="Gmail" style="width:24px;height:24px;margin-right:6px;">${userName}</span>
+            <button id="signout-btn" style="margin-left:10px;">Sign Out</button>
+        `;
+        document.getElementById('signout-btn').onclick = signOut;
+    } else {
+        // Show Google Sign-In button with auto_select
+        google.accounts.id.initialize({
+            client_id: CLIENT_ID,
+            callback: handleCredentialResponse,
+            auto_select: true // This will try to auto sign-in if possible
+        });
+        google.accounts.id.renderButton(
+            document.getElementById("g_id_signin"),
+            { theme: "outline", size: "large", logo_alignment: "left", text: "signin_with", shape: "rectangular" }
+        );
+        google.accounts.id.renderButton(
+            document.getElementById("g_id_signin_sidebar"),
+            { theme: "outline", size: "large", logo_alignment: "left", text: "signin_with", shape: "rectangular" }
+        );
+        google.accounts.id.prompt(); // Shows the One Tap prompt if possible
+    }
+};
+
 // ...existing code...
+
+
+// ...existing code...
+// ...existing code...
+
+// Digital clock update
+function updateDigitalClock() {
+    const now = new Date();
+    const h = String(now.getHours()).padStart(2, '0');
+    const m = String(now.getMinutes()).padStart(2, '0');
+    const s = String(now.getSeconds()).padStart(2, '0');
+    const clock = document.getElementById('flip-clock');
+    if (clock) {
+        clock.textContent = `${h}:${m}:${s}`;
+    }
+}
+setInterval(updateDigitalClock, 1000);
+updateDigitalClock();
