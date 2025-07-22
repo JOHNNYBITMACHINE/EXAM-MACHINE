@@ -678,15 +678,45 @@ background: linear-gradient(90deg, rgba(18, 18, 22, 1.000) 0.000%,
 
 .contact-form{
     grid-area: contacts ;
-    width: 100%;
-    height: 100%;
+
+    
     display: flex;
     flex-direction: column;
     padding: 10px;
     border-radius: 20px;
     background: white;
+     box-shadow: 0 8px 32px rgba(44, 62, 80, 0.18), 0 1.5px 8px rgba(44, 62, 80, 0.08);
+    border: 1.5px solid #b3c6e7;
+    transition: box-shadow 0.3s;
 
 
+}
+
+.contact-form h2{
+
+    text-align: center;
+    color: #1762da;
+    margin-bottom: 18px;
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+
+}
+
+
+.contact-form iframe{
+    
+   
+    border: none;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 2px 12px rgba(44, 62, 80, 0.10);
+
+}
+
+
+.contact-form:hover {
+    box-shadow: 0 12px 48px rgba(44, 62, 80, 0.22), 0 2px 12px rgba(44, 62, 80, 0.12);
 }
 
 .contact-form iframe {
@@ -694,6 +724,8 @@ background: linear-gradient(90deg, rgba(18, 18, 22, 1.000) 0.000%,
     height: 100%;
     
 }
+
+
 
 
 
