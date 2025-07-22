@@ -561,6 +561,7 @@ background-image: linear-gradient( 135deg,#ff0095c5,#2c0219);
 .contianer-mock> .vital{
     width: 100%;
     height: 100%;
+    
     align-items: center;
 
    background-image: linear-gradient(to right, #ca0880 0%, #23458f  51%,rgb(0, 162, 255) 70% , #AA076B  100%);
@@ -615,7 +616,7 @@ background-image: linear-gradient( 135deg,#ff0095c5,#2c0219);
 
 
 .container-contactus{
-    width: 100%;
+    
   
     grid-area: footer;
     display: flex;
@@ -838,28 +839,31 @@ background: linear-gradient(90deg, rgba(18, 18, 22, 1.000) 0.000%,
     }
 
     @keyframes sidebarGradient {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+
+
+                0% { background-position: 0% 50%; }
+                50% { background-position: 100% 50%; }
+                100% { background-position: 0% 50%; }
     }
-        .sidebar.open {
+    .sidebar.open {
             left: 0;
-        }
-        .sidebar-list {
+    }
+    .sidebar-list {
             list-style: none;
             padding: 0;
             margin: 0;
-        }
-        .sidebar-list li, .sidebar-list h3 {
+    }
+    .sidebar-list li, .sidebar-list h3 {
             padding: 10px 2px;
-        }
-        .sidebar-list li a {
+    }
+    .sidebar-list li a {
             color: #fff;
             text-decoration: none;
             display: block;
             font-size: 19px;
 
-        }
+    }
+
         
 
         
