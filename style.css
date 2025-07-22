@@ -777,6 +777,8 @@ background: linear-gradient(90deg, rgba(18, 18, 22, 1.000) 0.000%,
         flex-direction: column;
         align-items: center;
         justify-content: space-around;
+        gap: 10px;
+        
     }
     .container-mock section {
         width: 100%;
