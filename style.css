@@ -2,10 +2,8 @@ body{
     font-family: 'Times New Roman', Times, serif;
     margin: 0;
     padding: 0;
-    /* https://grabient.com/HQFgTArANMYBxhgBjARigWiaCTPZFQE4YB2JEfYCIkrUAZkvpCalWADZurJF7uDIA?style=angularSwatches&steps=21&angle=90 */
-
-        background: conic-gradient(from 90deg, rgba(166, 73, 0, 1.000) 0.000deg, rgba(166, 73, 0, 1.000) 17.143deg, rgba(184, 88, 0, 1.000) 17.143deg, rgba(184, 88, 0, 1.000) 34.286deg, rgba(199, 102, 0, 1.000) 34.286deg, rgba(199, 102, 0, 1.000) 51.429deg, rgba(210, 116, 0, 1.000) 51.429deg, rgba(210, 116, 0, 1.000) 68.571deg, rgba(218, 128, 5, 1.000) 68.571deg, rgba(218, 128, 5, 1.000) 85.714deg, rgba(223, 140, 30, 1.000) 85.714deg, rgba(223, 140, 30, 1.000) 102.857deg, rgba(223, 151, 53, 1.000) 102.857deg, rgba(223, 151, 53, 1.000) 120.000deg, rgba(219, 160, 77, 1.000) 120.000deg, rgba(219, 160, 77, 1.000) 137.143deg, rgba(211, 167, 98, 1.000) 137.143deg, rgba(211, 167, 98, 1.000) 154.286deg, rgba(200, 173, 118, 1.000) 154.286deg, rgba(200, 173, 118, 1.000) 171.429deg, rgba(185, 177, 136, 1.000) 171.429deg, rgba(185, 177, 136, 1.000) 188.571deg, rgba(168, 179, 152, 1.000) 188.571deg, rgba(168, 179, 152, 1.000) 205.714deg, rgba(148, 178, 164, 1.000) 205.714deg, rgba(148, 178, 164, 1.000) 222.857deg, rgba(127, 176, 174, 1.000) 222.857deg, rgba(127, 176, 174, 1.000) 240.000deg, rgba(106, 172, 181, 1.000) 240.000deg, rgba(106, 172, 181, 1.000) 257.143deg, rgba(85, 166, 184, 1.000) 257.143deg, rgba(85, 166, 184, 1.000) 274.286deg, rgba(64, 159, 185, 1.000) 274.286deg, rgba(64, 159, 185, 1.000) 291.429deg, rgba(45, 149, 181, 1.000) 291.429deg, rgba(45, 149, 181, 1.000) 308.571deg, rgba(28, 139, 175, 1.000) 308.571deg, rgba(28, 139, 175, 1.000) 325.714deg, rgba(14, 127, 165, 1.000) 325.714deg, rgba(14, 127, 165, 1.000) 342.857deg, rgba(4, 114, 153, 1.000) 342.857deg 360.000deg);
-      
+    
+       
         
 }
 
@@ -685,8 +683,8 @@ background: linear-gradient(90deg, rgba(18, 18, 22, 1.000) 0.000%,
     color: white;
     text-decoration: none;
     list-style: none;
-    font-size: 1.2rem;
-    font-weight: bold;
+    font-size: 1.rem;
+    font-weight:normal;
 }
 
 
@@ -721,33 +719,12 @@ background: linear-gradient(90deg, rgba(18, 18, 22, 1.000) 0.000%,
 
 
 /* Popup styles */
-#auth-popup {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 25px;
-  background: #f0f0f0;
-  border: 2px solid #333;
-  box-shadow: 0 0 15px rgba(0,0,0,0.3);
-  display: none;
-  z-index: 9999;
-  max-width: 350px;
-  width: 90%;
-  border-radius: 8px;
-}
-#auth-popup input {
-  margin: 5px 0;
-  padding: 8px;
-  width: 100%;
-  box-sizing: border-box;
-}
-#auth-popup button {
-  margin: 5px 0;
-  padding: 10px;
-  width: 100%;
-  box-sizing: border-box;
-}
+
+
+
+
+
+
 
 
 
@@ -883,36 +860,48 @@ background: linear-gradient(90deg, rgba(18, 18, 22, 1.000) 0.000%,
     align-items: center;
     /* Animated gradient background */
     background: linear-gradient(135deg, #ffffff 0%, #e3e3e3 30%, #1762da 60%, #c2e9fb 100%);
-    background-size: 400% 400%;
-    animation: sidebarGradient 8s ease-in-out infinite;
+    
+
     color: #222;
     overflow-y: auto;
     transition: left 0.3s ease;
     z-index: 1000;
-    padding-top: 60px;
+    padding-top: 100px;
     padding-bottom: 60px;
     scrollbar-width: none;
     -ms-overflow-style: none;
     font-size: 19px;
     }
 
-    @keyframes sidebarGradient {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-    }
-        .sidebar.open {
+  
+.sidebar.open {
             left: 0;
         }
-        .sidebar-list {
+.sidebar-list {
             list-style: none;
             padding: 0;
             margin: 0;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            margin-left: 50px;
+            margin-right: 50px;
+            gap: 10px   ;
+           
+
         }
-        .sidebar-list li, .sidebar-list h3 {
+.sidebar-list li, .sidebar-list h3 {
             padding: 10px 2px;
         }
-        .sidebar-list li a {
+
+.sidebar-list li {
+    border-radius: 10px;
+    background: linear-gradient(135deg, #ac24b9 0%, #4f3ac5 30%, #1762da 60%, #0e1518 100%);
+    gap: 10px;
+
+}
+
+.sidebar-list li a {
             color: #fff;
             text-decoration: none;
             display: block;
