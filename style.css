@@ -187,12 +187,19 @@ body{
     width: 100%;
     height: 50px;
     text-align: center;
-   
+   animation: crystalGradientt 10s ease-in-out  ;
     background-image: linear-gradient( 135deg, #9151d1 10%, #3e2eec 60% , white 10%);
     background-size: 200% 200%;
     
 }
 
+@keyframes crystalGradientt {
+    0% { background-position: 0% 50%;
+    color: rgb(255, 255, 255); }
+    50% { background-position: 100% 50%; 
+    color : rgb(32, 28, 28); }
+    100% { background-position: 0% 100%; 
+    color:rgb(255, 255, 255)}}
 
 
 
@@ -266,7 +273,10 @@ body{
 
 }
 
-
+@keyframes gradient_tras {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }}
 
 
 .container-subject section a{
@@ -519,6 +529,9 @@ background-image: linear-gradient( 135deg,#ff0095c5,#2c0219);
     text-align: center;
     border-radius: 20px;
     gap: 3%;
+    text-align: center ;
+    align-items: center;
+
    
     padding: 10px;
 
@@ -544,6 +557,8 @@ background-image: linear-gradient( 135deg,#ff0095c5,#2c0219);
 
 
 .contianer-mock  .vital  a {
+    width: 100%;
+ 
 
     text-decoration: none;
     color: white;
@@ -551,15 +566,15 @@ background-image: linear-gradient( 135deg,#ff0095c5,#2c0219);
     gap: 20px;
     text-align: center;
     font-size: .81rem;
-   
+    text-align: center;
 }
 
 
 .contianer-mock> .vital{
     width: 100%;
-    height: 100%;
-    
+  
     align-items: center;
+    text-align: center;
 
    background-image: linear-gradient(to right, #ca0880 0%, #23458f  51%,rgb(0, 162, 255) 70% , #AA076B  100%);
     display: block;
@@ -670,65 +685,35 @@ background: linear-gradient(90deg, rgba(18, 18, 22, 1.000) 0.000%,
     color: white;
     text-decoration: none;
     list-style: none;
-    font-size: .92rem;
-    
+    font-size: 1.2rem;
+    font-weight: bold;
 }
 
 
 
 .contact-form{
     grid-area: contacts ;
-    
-    height: 100%;;
-
-    
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-    border-radius: 20px;
+   
     background: white;
-     box-shadow: 0 8px 32px rgba(44, 62, 80, 0.18), 0 1.5px 8px rgba(44, 62, 80, 0.08);
-    border: 1.5px solid #b3c6e7;
-    transition: box-shadow 0.3s;
+    border-radius: 20px;
+    padding: 10px;
+    align-items: center;
 
 
 }
 
 .contact-form h2{
-
+    color: rgb(20, 105, 201);
     text-align: center;
-    color: #1762da;
-    margin-bottom: 18px;
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: bold;
-    letter-spacing: 1px;
-
+    margin-bottom: 10px;
+    text-decoration: underline;
 }
-
 
 .contact-form iframe{
-    
-   
-    border: none;
-    border-radius: 12px;
-    background: #fff;
-    box-shadow: 0 2px 12px rgba(44, 62, 80, 0.10);
-
+    width: 100%;
 }
-
-
-.contact-form:hover {
-    box-shadow: 0 12px 48px rgba(44, 62, 80, 0.22), 0 2px 12px rgba(44, 62, 80, 0.12);
-}
-
-.contact-form iframe {
-   
-    height: 100%;
-    
-}
-
-
-
 
 
 
@@ -767,89 +752,46 @@ background: linear-gradient(90deg, rgba(18, 18, 22, 1.000) 0.000%,
 
 @media screen and (max-width: 600px) {
     body{
-        
-        height: 100%;
-        margin: 1%;
-        padding: 4px;
-
-
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
 
-    }
-    .container-header{
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-       
     }
 
     .main_container-j {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
         grid-template-columns: 1fr;
-        grid-template-rows: auto;   
-    }
-
-    .container-news{
-        width: 100%;
+        grid-template-rows: auto;
+        grid-template-areas: 
+            "header"
+            "navigation"
+            "main"
+            "news"
+            "mock"
+            "footer"
+            "contacts";
+        gap: 10px;
     }
     .container-header {
         flex-direction: column;
         align-items: center;
     }
     .container-subject{
-        width: 100%;
         display: flex;
         flex-direction: column;
     }
     .contianer-mock {
-        width: 100%;
-        display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: space-around;
         gap: 10px;
-
     }
-    .container-mock section {
-        width: 100%;
-        height: 80%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
     .container-navigation{
         display: none;
+
+    
+    
     }
 
-    .container-contactus{
-        width: 100%;
-    }
-
-    .sidebar{
-                  position: fixed;
-    top: 0;
-    left: -150px;
-    width: 150px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    }
-
-    .contact-form{
-        width: 100%;
-    }
 }
 
 
@@ -915,7 +857,7 @@ background: linear-gradient(90deg, rgba(18, 18, 22, 1.000) 0.000%,
     align-items: center;
     /* Animated gradient background */
     background: linear-gradient(135deg, #ffffff 0%, #e3e3e3 30%, #1762da 60%, #c2e9fb 100%);
-   
+    background-size: 400% 400%;
     animation: sidebarGradient 8s ease-in-out infinite;
     color: #222;
     overflow-y: auto;
@@ -928,27 +870,29 @@ background: linear-gradient(90deg, rgba(18, 18, 22, 1.000) 0.000%,
     font-size: 19px;
     }
 
-   
-    .sidebar.open {
-            left: 0;
+    @keyframes sidebarGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
     }
-    .sidebar-list {
+        .sidebar.open {
+            left: 0;
+        }
+        .sidebar-list {
             list-style: none;
             padding: 0;
             margin: 0;
-    }
-    .sidebar-list li, .sidebar-list h3 {
-            padding: 10px;
-    }
-    .sidebar-list li a {
-            color: #140101;
+        }
+        .sidebar-list li, .sidebar-list h3 {
+            padding: 10px 2px;
+        }
+        .sidebar-list li a {
+            color: #fff;
             text-decoration: none;
-            font-weight: bolder;
             display: block;
             font-size: 19px;
 
-    }
-
+        }
         
 
         
@@ -969,13 +913,5 @@ background: linear-gradient(90deg, rgba(18, 18, 22, 1.000) 0.000%,
             padding: 8px 12px;
             border-radius: 4px;
         }
-
-.sidebar-list>li >a {
-    width: 100% ;
-    height: 100%;
- 
-    
-}
-
 
 

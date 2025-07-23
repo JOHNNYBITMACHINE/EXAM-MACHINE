@@ -17,6 +17,3 @@ document.body.addEventListener('click', function(event) {
         sidebar.classList.remove('open');
     }
 });
-
-
-
