@@ -930,3 +930,38 @@ background: linear-gradient(90deg, rgba(18, 18, 22, 1.000) 0.000%,
         }
 
 
+
+
+
+
+
+#auth-popup {
+  min-width: 320px;
+  max-width: 400px;
+  min-height: 200px;
+  box-shadow: 0 0 20px #000;
+  background: #fff;
+  border-radius: 16px;
+  padding: 30px;
+  z-index: 2000;
+}
+#auth-popup input {
+  width: 90%;
+  margin: 8px 0;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+#auth-popup button {
+  margin: 8px 4px;
+  padding: 8px 16px;
+  border-radius: 6px;
+  background: #1762da;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+#auth-popup h2 {
+  margin-bottom: 12px;
+  color: #1762da;
+}
