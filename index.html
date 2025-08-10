@@ -491,6 +491,186 @@
  
 
 
+        <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-analytics.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyClX3tOcdMQ6a53sNUqBceT8RdTJeO07H4",
+        authDomain: "sarkari-exam-book.firebaseapp.com",
+        projectId: "sarkari-exam-book",
+        storageBucket: "sarkari-exam-book.firebasestorage.app",
+        messagingSenderId: "508979517538",
+        appId: "1:508979517538:web:b43e6451d95f13fdeed93b",
+        measurementId: "G-KK8ELBRZ4X"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const auth = getAuth(app);
+
+    // Expose auth functions globally
+    window.firebaseAuth = {
+        auth,
+        signInWithEmailAndPassword,
+        createUserWithEmailAndPassword,
+        sendPasswordResetEmail,
+        GoogleAuthProvider,
+        signInWithPopup
+    };
+
+     // Listen for auth state changes and update sidebar
+    import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+    window.firebaseAuth.onAuthStateChanged = onAuthStateChanged;
+    window.firebaseAuth.signOut = signOut;
+
+    function updateSidebar(user) {
+        const sidebarList = document.querySelector('.sidebar-list');
+        if (!sidebarList) return;
+
+        // Remove previous auth items
+        sidebarList.querySelectorAll('.auth-item').forEach(el => el.remove());
+
+        if (user) {
+            // Show username and logout
+            const userItem = document.createElement('li');
+            userItem.className = 'auth-item';
+            userItem.textContent = `👤 ${user.displayName || user.email}`;
+            sidebarList.insertBefore(userItem, sidebarList.firstChild);
+
+            const logoutItem = document.createElement('li');
+            logoutItem.className = 'auth-item';
+            const logoutLink = document.createElement('a');
+            logoutLink.href = "#";
+            logoutLink.textContent = "🚪 Logout";
+            logoutLink.onclick = async () => {
+                await window.firebaseAuth.signOut(window.firebaseAuth.auth);
+            };
+            logoutItem.appendChild(logoutLink);
+            sidebarList.insertBefore(logoutItem, sidebarList.firstChild);
+        } else {
+            // Show sign in/up
+            const signInItem = document.createElement('li');
+            signInItem.className = 'auth-item';
+            const signInLink = document.createElement('a');
+            signInLink.href = "#";
+            signInLink.textContent = "Sign In";
+            signInLink.onclick = () => showAuthPopup('signin');
+            signInItem.appendChild(signInLink);
+
+            const signUpItem = document.createElement('li');
+            signUpItem.className = 'auth-item';
+            const signUpLink = document.createElement('a');
+            signUpLink.href = "#";
+            signUpLink.textContent = "Sign Up";
+            signUpLink.onclick = () => showAuthPopup('signup');
+            signUpItem.appendChild(signUpLink);
+
+            sidebarList.insertBefore(signUpItem, sidebarList.firstChild);
+            sidebarList.insertBefore(signInItem, sidebarList.firstChild);
+        }
+    }
+
+    window.firebaseAuth.onAuthStateChanged(window.firebaseAuth.auth, updateSidebar);
+</script>
+
+<script>
+    function showAuthPopup(type) {
+        const popup = document.getElementById('auth-popup');
+        const content = document.getElementById('auth-content');
+        if (type === 'signin') {
+            content.innerHTML = `
+                <h2>Sign In</h2>
+                <input id="signin-email" type="email" placeholder="Email"><br>
+                <input id="signin-password" type="password" placeholder="Password"><br>
+                <button id="signin-btn">Sign In</button>
+                <button id="google-signin-btn">Sign In with Google</button>
+                <br><a href="#" onclick="showAuthPopup('reset')">Forgot Password?</a>
+            `;
+        } else if (type === 'signup') {
+            content.innerHTML = `
+                <h2>Sign Up</h2>
+                <input id="signup-email" type="email" placeholder="Email"><br>
+                <input id="signup-password" type="password" placeholder="Password"><br>
+                <button id="signup-btn">Sign Up</button>
+                <button id="google-signin-btn">Sign Up with Google</button>
+            `;
+        } else if (type === 'reset') {
+            content.innerHTML = `
+                <h2>Reset Password</h2>
+                <input id="reset-email" type="email" placeholder="Email"><br>
+                <button id="reset-btn">Send Reset Email</button>
+            `;
+        }
+        popup.style.display = 'block';
+
+        // Attach event listeners after HTML is injected
+        setTimeout(() => {
+            const { auth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, GoogleAuthProvider, signInWithPopup } = window.firebaseAuth;
+
+            if (document.getElementById('signin-btn')) {
+                document.getElementById('signin-btn').onclick = async () => {
+                    const email = document.getElementById('signin-email').value;
+                    const password = document.getElementById('signin-password').value;
+                    try {
+                        await signInWithEmailAndPassword(auth, email, password);
+                        alert('Signed in!');
+                        closeAuthPopup();
+                    } catch (error) {
+                        alert(error.message);
+                    }
+                };
+            }
+
+            if (document.getElementById('signup-btn')) {
+                document.getElementById('signup-btn').onclick = async () => {
+                    const email = document.getElementById('signup-email').value;
+                    const password = document.getElementById('signup-password').value;
+                    try {
+                        await createUserWithEmailAndPassword(auth, email, password);
+                        alert('Account created!');
+                        closeAuthPopup();
+                    } catch (error) {
+                        alert(error.message);
+                    }
+                };
+            }
+
+            if (document.getElementById('google-signin-btn')) {
+                document.getElementById('google-signin-btn').onclick = async () => {
+                    const provider = new GoogleAuthProvider();
+                    try {
+                        await signInWithPopup(auth, provider);
+                        alert('Signed in with Google!');
+                        closeAuthPopup();
+                    } catch (error) {
+                        alert(error.message);
+                    }
+                };
+            }
+
+            if (document.getElementById('reset-btn')) {
+                document.getElementById('reset-btn').onclick = async () => {
+                    const email = document.getElementById('reset-email').value;
+                    try {
+                        await sendPasswordResetEmail(auth, email);
+                        alert('Password reset email sent!');
+                        closeAuthPopup();
+                    } catch (error) {
+                        alert(error.message);
+                    }
+                };
+            }
+        }, 0);
+    }
+
+    function closeAuthPopup() {
+        document.getElementById('auth-popup').style.display = 'none';
+    }
+</script>
+
+
 
 
 
@@ -502,120 +682,6 @@
 
 
 
-                        <script type="module">
-                                    // Import the functions you need from the SDKs you need
-            import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
-            import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-analytics.js";
-            // TODO: Add SDKs for Firebase products that you want to use
-            // https://firebase.google.com/docs/web/setup#available-libraries
-
-            // Your web app's Firebase configuration
-            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-            const firebaseConfig = {
-                apiKey: "AIzaSyClX3tOcdMQ6a53sNUqBceT8RdTJeO07H4",
-                authDomain: "sarkari-exam-book.firebaseapp.com",
-                projectId: "sarkari-exam-book",
-                storageBucket: "sarkari-exam-book.firebasestorage.app",
-                messagingSenderId: "508979517538",
-                appId: "1:508979517538:web:b43e6451d95f13fdeed93b",
-                measurementId: "G-KK8ELBRZ4X"
-            };
-
-            // Initialize Firebase
-            const app = initializeApp(firebaseConfig);
-            const analytics = getAnalytics(app);
-
-                    // Google Sign-In
-                    document.getElementById('google-signin-btn').onclick = async () => {
-                        const provider = new GoogleAuthProvider();
-                        try {
-                        await signInWithPopup(auth, provider);
-                        alert('Signed in with Google!');
-                        closeAuthPopup();
-                        } catch (error) {
-                        alert(error.message);
-                        }
-                    };
-
-                    // Email/Password Sign Up
-                    document.getElementById('signup-btn').onclick = async () => {
-                        const email = document.getElementById('signup-email').value;
-                        const password = document.getElementById('signup-password').value;
-                        try {
-                        await createUserWithEmailAndPassword(auth, email, password);
-                        alert('Account created!');
-                        closeAuthPopup();
-                        } catch (error) {
-                        alert(error.message);
-                        }
-                    };
-
-                    // Email/Password Sign In
-                    document.getElementById('signin-btn').onclick = async () => {
-                        const email = document.getElementById('signin-email').value;
-                        const password = document.getElementById('signin-password').value;
-                        try {
-                        await signInWithEmailAndPassword(auth, email, password);
-                        alert('Signed in!');
-                        closeAuthPopup();
-                        } catch (error) {
-                        alert(error.message);
-                        }
-                    };
-
-                    // Password Reset
-                    document.getElementById('reset-btn').onclick = async () => {
-                        const email = document.getElementById('reset-email').value;
-                        try {
-                        await sendPasswordResetEmail(auth, email);
-                        alert('Password reset email sent!');
-                        } catch (error) {
-                        alert(error.message);
-                        }
-                    };
-
-                    // Helper to close popup
-                    function closeAuthPopup() {
-                        document.getElementById('auth-popup').style.display = 'none';
-                    }
-                    </script>
-
-
-
-
-
-
-                              
-                            <script>
-                                    function showAuthPopup(type) {
-                                    const popup = document.getElementById('auth-popup');
-                                    const content = document.getElementById('auth-content');
-                                    if (type === 'signin') {
-                                        content.innerHTML = `
-                                        <h2>Sign In</h2>
-                                        <input id="signin-email" type="email" placeholder="Email"><br>
-                                        <input id="signin-password" type="password" placeholder="Password"><br>
-                                        <button id="signin-btn">Sign In</button>
-                                        <button id="google-signin-btn">Sign In with Google</button>
-                                        <br><a href="#" onclick="showAuthPopup('reset')">Forgot Password?</a>
-                                        `;
-                                    } else if (type === 'signup') {
-                                        content.innerHTML = `
-                                        <h2>Sign Up</h2>
-                                        <input id="signup-email" type="email" placeholder="Email"><br>
-                                        <input id="signup-password" type="password" placeholder="Password"><br>
-                                        <button id="signup-btn">Sign Up</button>
-                                        <button id="google-signin-btn">Sign Up with Google</button>
-                                        `;
-                                    } else if (type === 'reset') {
-                                        content.innerHTML = `
-                                        <h2>Reset Password</h2>
-                                        <input id="reset-email" type="email" placeholder="Email"><br>
-                                        <button id="reset-btn">Send Reset Email</button>
-                                        `;
-                                    }
-                                    popup.style.display = 'block';
-                                    }
-                        </script>
+                 
 </body>
 </html>
