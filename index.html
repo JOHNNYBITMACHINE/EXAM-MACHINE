@@ -479,105 +479,139 @@
 
     <!-- Authentication Popup -->
 
-        <div id="authBar">
-            <div>
-                <span id="greetingText">Welcome, Guest!</span>
-                <img id="userPhoto" src="" alt="Profile">
+          <div id="auth-popup" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); background:white; z-index:2000; padding:30px; border-radius:16px; box-shadow:0 0 20px #000;">
+            <div id="auth-content">
+                <!-- Content will be injected by JS -->
             </div>
-            <div>
-                <button id="loginBtn" onclick="googleLogin()">Login with Google</button>
-                <button id="logoutBtn" onclick="googleLogout()" style="display:none;">Logout</button>
-            </div>
+            <button onclick="document.getElementById('auth-popup').style.display='none'">Close</button>
         </div>
 
 
 
-        <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
-
-
-
-<script>
-                const firebaseConfig = {
-                        apiKey: "AIzaSyClX3tOcdMQ6a53sNUqBceT8RdTJeO07H4",
-                        authDomain: "sarkari-exam-book.firebaseapp.com",
-                        projectId: "sarkari-exam-book",
-                        storageBucket: "sarkari-exam-book.firebasestorage.app",
-                        messagingSenderId: "508979517538",
-                        appId: "1:508979517538:web:b43e6451d95f13fdeed93b",
-                        measurementId: "G-KK8ELBRZ4X"
-                };
-                firebase.initializeApp(firebaseConfig);
-                const auth = firebase.auth();
-                </script>
-
-                <!-- Google Login Script -->
-                <script>
-                function getGreeting() {
-                    const hour = new Date().getHours();
-                    if (hour < 12) return "Good Morning";
-                    if (hour < 18) return "Good Afternoon";
-                    return "Good Evening";
-                }
-
-                function googleLogin() {
-                    const provider = new firebase.auth.GoogleAuthProvider();
-                    auth.signInWithPopup(provider)
-                    .then((result) => {
-                        const name = result.user.displayName;
-                        const photo = result.user.photoURL;
-                        localStorage.setItem("userName", name);
-                        localStorage.setItem("userPhoto", photo);
-                        updateUI(name, photo, true);
-                    })
-                    .catch(console.error);
-                }
-
-                function googleLogout() {
-                    auth.signOut().then(() => {
-                    localStorage.removeItem("userName");
-                    localStorage.removeItem("userPhoto");
-                    updateUI("Guest", "", false);
-                    });
-                }
-
-                function updateUI(name, photo, animate = false) {
-                    const greeting = name === "Guest" ? "Welcome" : getGreeting();
-                    const greetingText = document.getElementById("greetingText");
-                    const userPhoto = document.getElementById("userPhoto");
-
-                    greetingText.innerText = `${greeting}, ${name}!`;
-                    if (photo) {
-                    userPhoto.src = photo;
-                    userPhoto.style.display = "inline-block";
-                    } else {
-                    userPhoto.style.display = "none";
-                    }
-
-                    document.getElementById("loginBtn").style.display = name === "Guest" ? "inline-block" : "none";
-                    document.getElementById("logoutBtn").style.display = name === "Guest" ? "none" : "inline-block";
-
-                    if (animate) {
-                    greetingText.classList.add("fadeIn");
-                    userPhoto.classList.add("fadeIn");
-                    setTimeout(() => {
-                        greetingText.classList.remove("fadeIn");
-                        userPhoto.classList.remove("fadeIn");
-                    }, 1000);
-                    }
-                }
-
-                document.addEventListener("DOMContentLoaded", () => {
-                    const storedName = localStorage.getItem("userName") || "Guest";
-                    const storedPhoto = localStorage.getItem("userPhoto") || "";
-                    updateUI(storedName, storedPhoto, false);
-                });
-        </script>   
+        
 
 
 
 
 
+                     <!-- ...existing code... -->
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-analytics.js";
+    import {
+        getAuth,
+        GoogleAuthProvider,
+        signInWithPopup,
+        createUserWithEmailAndPassword,
+        signInWithEmailAndPassword,
+        sendPasswordResetEmail
+    } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyClX3tOcdMQ6a53sNUqBceT8RdTJeO07H4",
+        authDomain: "sarkari-exam-book.firebaseapp.com",
+        projectId: "sarkari-exam-book",
+        storageBucket: "sarkari-exam-book.firebasestorage.app",
+        messagingSenderId: "508979517538",
+        appId: "1:508979517538:web:b43e6451d95f13fdeed93b",
+        measurementId: "G-KK8ELBRZ4X"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const auth = getAuth(app);
+
+    // Wait for popup to render before adding event listeners
+    document.addEventListener('click', function (e) {
+        // Sign In
+        if (e.target && e.target.id === 'signin-btn') {
+            const email = document.getElementById('signin-email').value;
+            const password = document.getElementById('signin-password').value;
+            signInWithEmailAndPassword(auth, email, password)
+                .then(() => {
+                    alert('Signed in!');
+                    closeAuthPopup();
+                })
+                .catch(error => alert(error.message));
+        }
+        // Sign Up
+        if (e.target && e.target.id === 'signup-btn') {
+            const email = document.getElementById('signup-email').value;
+            const password = document.getElementById('signup-password').value;
+            createUserWithEmailAndPassword(auth, email, password)
+                .then(() => {
+                    alert('Account created!');
+                    closeAuthPopup();
+                })
+                .catch(error => alert(error.message));
+        }
+        // Google Sign-In (for both sign-in and sign-up)
+        if (e.target && e.target.id === 'google-signin-btn') {
+            const provider = new GoogleAuthProvider();
+            signInWithPopup(auth, provider)
+                .then(() => {
+                    alert('Signed in with Google!');
+                    closeAuthPopup();
+                })
+                .catch(error => alert(error.message));
+        }
+        // Password Reset
+        if (e.target && e.target.id === 'reset-btn') {
+            const email = document.getElementById('reset-email').value;
+            sendPasswordResetEmail(auth, email)
+                .then(() => alert('Password reset email sent!'))
+                .catch(error => alert(error.message));
+        }
+    });
+
+    function closeAuthPopup() {
+        document.getElementById('auth-popup').style.display = 'none';
+    }
+</script>
+<!-- ...existing code... -->
+
+
+
+
+
+
+
+
+
+
+                              
+                            <script>
+                                    function showAuthPopup(type) {
+                                    const popup = document.getElementById('auth-popup');
+                                    const content = document.getElementById('auth-content');
+                                    if (type === 'signin') {
+                                        content.innerHTML = `
+                                        <h2>Sign In</h2>
+                                        <input id="signin-email" type="email" placeholder="Email"><br>
+                                        <input id="signin-password" type="password" placeholder="Password"><br>
+                                        <button id="signin-btn">Sign In</button>
+                                        <button id="google-signin-btn">Sign In with Google</button>
+                                        <br><a href="#" onclick="showAuthPopup('reset')">Forgot Password?</a>
+                                        `;
+                                    } else if (type === 'signup') {
+                                        content.innerHTML = `
+                                        <h2>Sign Up</h2>
+                                        <input id="signup-email" type="email" placeholder="Email"><br>
+                                        <input id="signup-password" type="password" placeholder="Password"><br>
+                                        <button id="signup-btn">Sign Up</button>
+                                        <button id="google-signin-btn">Sign Up with Google</button>
+                                        `;
+                                    } else if (type === 'reset') {
+                                        content.innerHTML = `
+                                        <h2>Reset Password</h2>
+                                        <input id="reset-email" type="email" placeholder="Email"><br>
+                                        <button id="reset-btn">Send Reset Email</button>
+                                        `;
+                                    }
+                                    popup.style.display = 'block';
+                                    }
+                        </script>
 
 
                         <script src="main.js"></script>
