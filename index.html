@@ -479,22 +479,37 @@
 
     <!-- Authentication Popup -->
 
-        <div id="auth-popup" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); background:white; z-index:2000; padding:30px; border-radius:16px; box-shadow:0 0 20px #000;">
-            <div id="auth-content">
-                <!-- Content will be injected by JS -->
+        <div id="authBar">
+            <div>
+                <span id="greetingText">Welcome, Guest!</span>
+                <img id="userPhoto" src="" alt="Profile">
             </div>
-            <button onclick="document.getElementById('auth-popup').style.display='none'">Close</button>
+            <div>
+                <button id="loginBtn" onclick="googleLogin()">Login with Google</button>
+                <button id="logoutBtn" onclick="googleLogout()" style="display:none;">Logout</button>
+            </div>
         </div>
 
 
 
- 
+        
 
 
-        <script type="module">
+
+
+
+                     <!-- ...existing code... -->
+<script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
-    import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-analytics.js";
+    import {
+        getAuth,
+        GoogleAuthProvider,
+        signInWithPopup,
+        createUserWithEmailAndPassword,
+        signInWithEmailAndPassword,
+        sendPasswordResetEmail
+    } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 
     const firebaseConfig = {
         apiKey: "AIzaSyClX3tOcdMQ6a53sNUqBceT8RdTJeO07H4",
@@ -506,169 +521,59 @@
         measurementId: "G-KK8ELBRZ4X"
     };
 
+    // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
     const auth = getAuth(app);
 
-    // Expose auth functions globally
-    window.firebaseAuth = {
-        auth,
-        signInWithEmailAndPassword,
-        createUserWithEmailAndPassword,
-        sendPasswordResetEmail,
-        GoogleAuthProvider,
-        signInWithPopup
-    };
-
-     // Listen for auth state changes and update sidebar
-    import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
-    window.firebaseAuth.onAuthStateChanged = onAuthStateChanged;
-    window.firebaseAuth.signOut = signOut;
-
-    function updateSidebar(user) {
-        const sidebarList = document.querySelector('.sidebar-list');
-        if (!sidebarList) return;
-
-        // Remove previous auth items
-        sidebarList.querySelectorAll('.auth-item').forEach(el => el.remove());
-
-        if (user) {
-            // Show username and logout
-            const userItem = document.createElement('li');
-            userItem.className = 'auth-item';
-            userItem.textContent = `👤 ${user.displayName || user.email}`;
-            sidebarList.insertBefore(userItem, sidebarList.firstChild);
-
-            const logoutItem = document.createElement('li');
-            logoutItem.className = 'auth-item';
-            const logoutLink = document.createElement('a');
-            logoutLink.href = "#";
-            logoutLink.textContent = "🚪 Logout";
-            logoutLink.onclick = async () => {
-                await window.firebaseAuth.signOut(window.firebaseAuth.auth);
-            };
-            logoutItem.appendChild(logoutLink);
-            sidebarList.insertBefore(logoutItem, sidebarList.firstChild);
-        } else {
-            // Show sign in/up
-            const signInItem = document.createElement('li');
-            signInItem.className = 'auth-item';
-            const signInLink = document.createElement('a');
-            signInLink.href = "#";
-            signInLink.textContent = "Sign In";
-            signInLink.onclick = () => showAuthPopup('signin');
-            signInItem.appendChild(signInLink);
-
-            const signUpItem = document.createElement('li');
-            signUpItem.className = 'auth-item';
-            const signUpLink = document.createElement('a');
-            signUpLink.href = "#";
-            signUpLink.textContent = "Sign Up";
-            signUpLink.onclick = () => showAuthPopup('signup');
-            signUpItem.appendChild(signUpLink);
-
-            sidebarList.insertBefore(signUpItem, sidebarList.firstChild);
-            sidebarList.insertBefore(signInItem, sidebarList.firstChild);
+    // Wait for popup to render before adding event listeners
+    document.addEventListener('click', function (e) {
+        // Sign In
+        if (e.target && e.target.id === 'signin-btn') {
+            const email = document.getElementById('signin-email').value;
+            const password = document.getElementById('signin-password').value;
+            signInWithEmailAndPassword(auth, email, password)
+                .then(() => {
+                    alert('Signed in!');
+                    closeAuthPopup();
+                })
+                .catch(error => alert(error.message));
         }
-    }
-
-    window.firebaseAuth.onAuthStateChanged(window.firebaseAuth.auth, updateSidebar);
-</script>
-
-<script>
-    function showAuthPopup(type) {
-        const popup = document.getElementById('auth-popup');
-        const content = document.getElementById('auth-content');
-        if (type === 'signin') {
-            content.innerHTML = `
-                <h2>Sign In</h2>
-                <input id="signin-email" type="email" placeholder="Email"><br>
-                <input id="signin-password" type="password" placeholder="Password"><br>
-                <button id="signin-btn">Sign In</button>
-                <button id="google-signin-btn">Sign In with Google</button>
-                <br><a href="#" onclick="showAuthPopup('reset')">Forgot Password?</a>
-            `;
-        } else if (type === 'signup') {
-            content.innerHTML = `
-                <h2>Sign Up</h2>
-                <input id="signup-email" type="email" placeholder="Email"><br>
-                <input id="signup-password" type="password" placeholder="Password"><br>
-                <button id="signup-btn">Sign Up</button>
-                <button id="google-signin-btn">Sign Up with Google</button>
-            `;
-        } else if (type === 'reset') {
-            content.innerHTML = `
-                <h2>Reset Password</h2>
-                <input id="reset-email" type="email" placeholder="Email"><br>
-                <button id="reset-btn">Send Reset Email</button>
-            `;
+        // Sign Up
+        if (e.target && e.target.id === 'signup-btn') {
+            const email = document.getElementById('signup-email').value;
+            const password = document.getElementById('signup-password').value;
+            createUserWithEmailAndPassword(auth, email, password)
+                .then(() => {
+                    alert('Account created!');
+                    closeAuthPopup();
+                })
+                .catch(error => alert(error.message));
         }
-        popup.style.display = 'block';
-
-        // Attach event listeners after HTML is injected
-        setTimeout(() => {
-            const { auth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, GoogleAuthProvider, signInWithPopup } = window.firebaseAuth;
-
-            if (document.getElementById('signin-btn')) {
-                document.getElementById('signin-btn').onclick = async () => {
-                    const email = document.getElementById('signin-email').value;
-                    const password = document.getElementById('signin-password').value;
-                    try {
-                        await signInWithEmailAndPassword(auth, email, password);
-                        alert('Signed in!');
-                        closeAuthPopup();
-                    } catch (error) {
-                        alert(error.message);
-                    }
-                };
-            }
-
-            if (document.getElementById('signup-btn')) {
-                document.getElementById('signup-btn').onclick = async () => {
-                    const email = document.getElementById('signup-email').value;
-                    const password = document.getElementById('signup-password').value;
-                    try {
-                        await createUserWithEmailAndPassword(auth, email, password);
-                        alert('Account created!');
-                        closeAuthPopup();
-                    } catch (error) {
-                        alert(error.message);
-                    }
-                };
-            }
-
-            if (document.getElementById('google-signin-btn')) {
-                document.getElementById('google-signin-btn').onclick = async () => {
-                    const provider = new GoogleAuthProvider();
-                    try {
-                        await signInWithPopup(auth, provider);
-                        alert('Signed in with Google!');
-                        closeAuthPopup();
-                    } catch (error) {
-                        alert(error.message);
-                    }
-                };
-            }
-
-            if (document.getElementById('reset-btn')) {
-                document.getElementById('reset-btn').onclick = async () => {
-                    const email = document.getElementById('reset-email').value;
-                    try {
-                        await sendPasswordResetEmail(auth, email);
-                        alert('Password reset email sent!');
-                        closeAuthPopup();
-                    } catch (error) {
-                        alert(error.message);
-                    }
-                };
-            }
-        }, 0);
-    }
+        // Google Sign-In (for both sign-in and sign-up)
+        if (e.target && e.target.id === 'google-signin-btn') {
+            const provider = new GoogleAuthProvider();
+            signInWithPopup(auth, provider)
+                .then(() => {
+                    alert('Signed in with Google!');
+                    closeAuthPopup();
+                })
+                .catch(error => alert(error.message));
+        }
+        // Password Reset
+        if (e.target && e.target.id === 'reset-btn') {
+            const email = document.getElementById('reset-email').value;
+            sendPasswordResetEmail(auth, email)
+                .then(() => alert('Password reset email sent!'))
+                .catch(error => alert(error.message));
+        }
+    });
 
     function closeAuthPopup() {
         document.getElementById('auth-popup').style.display = 'none';
     }
 </script>
+<!-- ...existing code... -->
 
 
 
@@ -676,12 +581,43 @@
 
 
 
-    <script src="main.js"></script>
 
 
 
+                              
+                            <script>
+                                    function showAuthPopup(type) {
+                                    const popup = document.getElementById('auth-popup');
+                                    const content = document.getElementById('auth-content');
+                                    if (type === 'signin') {
+                                        content.innerHTML = `
+                                        <h2>Sign In</h2>
+                                        <input id="signin-email" type="email" placeholder="Email"><br>
+                                        <input id="signin-password" type="password" placeholder="Password"><br>
+                                        <button id="signin-btn">Sign In</button>
+                                        <button id="google-signin-btn">Sign In with Google</button>
+                                        <br><a href="#" onclick="showAuthPopup('reset')">Forgot Password?</a>
+                                        `;
+                                    } else if (type === 'signup') {
+                                        content.innerHTML = `
+                                        <h2>Sign Up</h2>
+                                        <input id="signup-email" type="email" placeholder="Email"><br>
+                                        <input id="signup-password" type="password" placeholder="Password"><br>
+                                        <button id="signup-btn">Sign Up</button>
+                                        <button id="google-signin-btn">Sign Up with Google</button>
+                                        `;
+                                    } else if (type === 'reset') {
+                                        content.innerHTML = `
+                                        <h2>Reset Password</h2>
+                                        <input id="reset-email" type="email" placeholder="Email"><br>
+                                        <button id="reset-btn">Send Reset Email</button>
+                                        `;
+                                    }
+                                    popup.style.display = 'block';
+                                    }
+                        </script>
 
 
-                 
+                        <script src="main.js"></script>
 </body>
 </html>
